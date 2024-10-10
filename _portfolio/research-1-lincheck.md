@@ -1,11 +1,13 @@
 ---
 title: "TruSt Implementation in Lincheck"
 permalink: /portfolio/lincheck/
-excerpt: "Implementation of a stateless DPOR algorithm for a model-checking framework at Max Planck for Software Systems"
+excerpt: "Implementation of a stateless DPOR algorithm for a model-checking framework"
 collection: portfolio
 type: research
+daterange: July 2023 - September 2023
+location: Max Planck Institute for Software Systems
 ---
 
-This is the implementation of the TruSt algorithm in the Lincheck framework. Lincheck is a model-checking framework for concurrent data structures in JVM-based languages, developed by JetBrains. The [TruSt](https://plv.mpi-sws.org/genmc/popl2022-trust.pdf) algorithm is a stateless dynamic partial order reduction (DPOR) algorithm that is used to reduce the number of explored interleavings in a concurrent program.
+This project involved the partial implementation of the TruSt algorithm within the Lincheck framework, a model-checking tool for concurrent data structures in JVM-based languages, developed by JetBrains. [TruSt](https://plv.mpi-sws.org/genmc/popl2022-trust.pdf) is a stateless dynamic partial order reduction (DPOR) algorithm designed to minimize the number of explored interleavings in concurrent programs.
 
-The project was started as a research internship at the Max Planck Institute for Software Systems (MPI-SWS) in collaboration with [Ava Mirmohammadmahdi](https://github.com/avamirm) in the summer of 2023 and was supervised by [Prof. Rupak Majumdar](https://people.mpi-sws.org/~rupak/). The repository for the project can be found [here](https://github.com/rupakm/lincheck). We faced many challenges during the implementation, which emerged from the high-level characteristics of Java. Some of these challenges can be found in the [report](https://github.com/rupakm/lincheck/blob/master/src/jvm/main/org/jetbrains/kotlinx/lincheck/strategy/managed/trust/README.md).
+The project was initiated as a research internship at the Max Planck Institute for Software Systems (MPI-SWS) in the summer of 2023, in collaboration with [Ava Mirmohammadmahdi](https://avamirm.github.io) and under the supervision of [Prof. Rupak Majumdar](https://people.mpi-sws.org/~rupak/). The project’s repository is available [here](https://github.com/rupakm/lincheck). Although the implementation was not completed, we encountered several challenges, primarily due to the high-level characteristics of Java, which are further detailed in the accompanying [report](https://github.com/rupakm/lincheck/blob/master/src/jvm/main/org/jetbrains/kotlinx/lincheck/strategy/managed/trust/README.md).
