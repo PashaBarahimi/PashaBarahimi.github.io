@@ -1,8 +1,8 @@
 ---
 title: "TruSt Implementation in Lincheck"
-permalink: /portfolio/lincheck/
+permalink: /projects/lincheck/
 excerpt: "Implementation of a stateless DPOR algorithm for a model-checking framework"
-collection: portfolio
+collection: projects
 type: research
 daterange: July 2023 - September 2023
 location: Max Planck Institute for Software Systems

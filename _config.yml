@@ -24,7 +24,7 @@ author:
   avatar: "profile.png"
   name: "Pasha Barahimi"
   pronouns: # "he/him"
-  bio: "Computer Engineering B.Sc. at the University of Tehran"
+  bio: "Undergraduate Computer Engineering Student"
   location: "Tehran, Iran"
   employer: "University of Tehran"
   uri: # URL
@@ -199,7 +199,7 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  projects:
     output: true
     permalink: /:collection/:path/
   talks:
@@ -244,10 +244,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _projects
   - scope:
       path: ""
-      type: portfolio
+      type: projects
     values:
       layout: single
       author_profile: true

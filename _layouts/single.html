@@ -43,7 +43,7 @@ layout: default
 
         {% if page.collection == 'teaching' %}
         <p> {{ page.type }}, <i>{{ page.venue }}</i><!-- , {{ page.date | default: "1900-01-01" | date: "%Y" }} --> </p>
-        {% elsif page.collection == 'portfolio' and page.daterange %}
+        {% elsif page.collection == 'projects' and page.daterange %}
         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i></strong> {{ page.daterange | default: "" }}</p>
         {% elsif page.venue and page.date %}
         <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
@@ -52,7 +52,7 @@ layout: default
             default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" |
             date: "%B %d, %Y" }}</time></p>
         {% endif %}
-        {% if page.location %}
+        {% if page.collection == 'projects' and page.location %}
         <p><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ page.location }}</p>
         {% endif %}
       </header>

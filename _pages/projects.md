@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "Portfolio"
-permalink: /portfolio/
+title: "Projects"
+permalink: /projects/
 author_profile: true
 ---
 
@@ -9,7 +9,7 @@ author_profile: true
 
 ## Research Projects
 
-{% for post in site.portfolio %}
+{% for post in site.projects %}
   {% if post.type == "research" %}
     {% include archive-single.html %}
   {% endif %}
@@ -17,7 +17,7 @@ author_profile: true
 
 ## Selected Projects
 
-{% for post in site.portfolio %}
+{% for post in site.projects %}
   {% if post.type == "selected" %}
     {% include archive-single.html %}
   {% endif %}
@@ -25,7 +25,7 @@ author_profile: true
 
 ## Other Projects
 
-{% for post in site.portfolio %}
+{% for post in site.projects %}
   {% if post.type == "other" %}
     {% include archive-single.html %}
   {% endif %}
