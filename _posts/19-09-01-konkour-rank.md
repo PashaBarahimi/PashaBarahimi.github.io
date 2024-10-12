@@ -2,6 +2,7 @@
 title: 'Konkour 1399 Rank - Top 0.1% in Mathematics and Physics'
 date: 2020-09-01
 permalink: /posts/2020/09/konkour-rank/
+excerpt: ""
 tags:
   - konkour
   - entrance exam
