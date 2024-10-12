@@ -51,7 +51,7 @@
     <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
 
-    {% if (post.collection == 'projects' or post.collection == 'research') and post.location %}
+    {% if post.location and post.collection == 'projects' or post.collection == 'research' %}
       <p style="margin-bottom: 8px;"><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ post.location }}</p>
     {% endif %}
     <hr style="border: 1px solid gray; margin-top: 8px; margin-bottom: 8px;">
@@ -74,6 +74,8 @@
         <td align="right">
           {% if post.role %}
           <p><strong>{{ post.role }}</strong></p>
+          {% elsif post.lang %}
+          <p><strong>{{ post.lang }}</strong></p>
           {% endif %}
         </td>
       </tr>
