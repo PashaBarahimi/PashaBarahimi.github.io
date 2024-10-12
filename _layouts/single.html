@@ -14,6 +14,24 @@ layout: default
 {% endunless %}
 {% endif %}
 
+<style>
+  table {
+    border: none;
+    font-size: medium;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    p {
+      margin: 0;
+    }
+  }
+
+  td, th {
+    border: none;
+    padding: 0;
+  }
+</style>
+
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -41,20 +59,34 @@ layout: default
             }}</time></p>
         {% endif %}
 
-        {% if page.collection == 'teaching' %}
-        <p> {{ page.type }}, <i>{{ page.venue }}</i><!-- , {{ page.date | default: "1900-01-01" | date: "%Y" }} --> </p>
-        {% elsif page.collection == 'projects' and page.daterange %}
-        <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i></strong> {{ page.daterange | default: "" }}</p>
-        {% elsif page.venue and page.date %}
-        <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.date %}
-        <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label |
-            default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" |
-            date: "%B %d, %Y" }}</time></p>
+        {% if page.collection == 'research' and page.location %}
+        <p style="margin-bottom: 8px;"><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ page.location }}</p>
         {% endif %}
-        {% if page.collection == 'projects' and page.location %}
-        <p><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ page.location }}</p>
-        {% endif %}
+
+        <hr style="border: 1px solid gray; margin-top: 8px; margin-bottom: 8px;">
+
+        <table>
+          <tr>
+            <td align="left">
+              {% if page.collection == 'teaching' %}
+              <p> {{ page.type }}, <i>{{ page.venue }}</i><!-- , {{ page.date | default: "1900-01-01" | date: "%Y" }} --> </p>
+              {% elsif page.daterange %}
+              <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i></strong> {{ page.daterange | default: "" }}</p>
+              {% elsif page.venue and page.date %}
+              <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+              {% elsif page.date %}
+              <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label |
+                  default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" |
+                  date: "%B %d, %Y" }}</time></p>
+              {% endif %}
+            </td>
+            <td align="right">
+              {% if page.role %}
+              <p><strong>{{ page.role }}</strong></p>
+              {% endif %}
+            </td>
+          </tr>
+        </table>
       </header>
       {% endunless %}
 
