@@ -22,4 +22,4 @@ Semester(s)
 Duties
 ======
 
-- Quiz Designer
+- Quiz Development

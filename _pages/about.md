@@ -19,7 +19,7 @@ I’m particularly drawn to **Distributed Systems, Blockchain, and Security**. A
 
 After diving deeper into Computer Networks and Operating Systems during my studies, I found myself increasingly fascinated by how systems work under the hood.
 
-In the summer of 2023, I had the amazing opportunity to intern at the Max Planck Institute for Software Systems (MPI-SWS) in Germany. I worked on Model Checking for multi-threaded programs as part of the TruSt algorithm project. This experience gave me a deeper understanding of Formal Methods and made me realize how important it is to ensure software works correctly, especially in complex, concurrent environments.
+In the summer of 2023, I had the amazing opportunity to intern at the Max Planck Institute for Software Systems (MPI-SWS) in Germany. I worked on Model Checking for multi-threaded programs as part of the TruSt algorithm project. This [experience](/research/lincheck) gave me a deeper understanding of Formal Methods and made me realize how important it is to ensure software works correctly, especially in complex, concurrent environments.
 
 ## Hobbies
 
