@@ -1,6 +1,6 @@
 ---
 title: "Distributed Computing Course Projects"
-permalink: /projects/dist-comp/
+permalink: /projects/dc/
 excerpt: "gRPC and ProtoBuf, Concurrency in Go, GlusterFS"
 collection: projects
 type: selected
@@ -17,27 +17,8 @@ Group members:
 - [Saman Eslami](https://github.com/SamanEN)
 - [Ali Padyav](https://github.com/alumpish)
 
-## gRPC and ProtoBuf
+## Assignments
 
-In this project, we implemented a simple gRPC client-server application with the following methods:
-
-- Unary RPC
-- Server Streaming RPC
-- Client Streaming RPC
-- Bidirectional Streaming RPC
-
-## Concurrency in Go
-
-This project was about implementing a concurrent client-server application with the following features:
-
-- Concurrency
-- Synchronization and Data Consistency
-- Fairness
-- Resource Management
-- Logging
-- Error Handling
-- Cache
-
-## GlusterFS
-
-In this project, we set up a GlusterFS cluster on multiple Xen VMs.
+1. gRPC and ProtoBuf
+2. Concurrency in Go
+3. GlusterFS on Xen VMs
