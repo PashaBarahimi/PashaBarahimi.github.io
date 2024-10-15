@@ -57,7 +57,7 @@ layout: default
             }}</time></p>
         {% endif %}
 
-        {% if page.collection == 'research' and page.location %}
+        {% if page.location and page.collection == 'research' or page.collection == 'work' %}
         <p style="margin-bottom: 8px;"><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ page.location }}</p>
         {% endif %}
 

@@ -205,6 +205,9 @@ collections:
   research:
     output: true
     permalink: /:collection/:path/
+  work:
+    output: true
+    permalink: /:collection/:path/
   talks:
     output: true
     permalink: /:collection/:path/
@@ -260,6 +263,15 @@ defaults:
   - scope:
       path: ""
       type: research
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
+  # _work
+  - scope:
+      path: ""
+      type: work
     values:
       layout: single
       author_profile: true

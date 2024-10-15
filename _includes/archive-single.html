@@ -50,7 +50,7 @@
     <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
 
-    {% if post.location and post.collection == 'projects' or post.collection == 'research' %}
+    {% if post.location and post.collection == 'projects' or post.collection == 'research' or post.collection == 'work' %}
       <p style="margin-bottom: 8px;"><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ post.location }}</p>
     {% endif %}
     <hr style="border: 1px solid gray; margin-top: 8px; margin-bottom: 8px;">
