@@ -27,6 +27,17 @@ Research Interests
 * Distributed Systems
 * Security
 
+Related Courses
+======
+
+|              Course Name              |      Grade     |
+|:-------------------------------------:|:--------------:|
+|    Introduction to Cryptocurrencies   |   20/20 (4/4)  |
+| Introduction to Distributed Computing |   20/20 (4/4)  |
+|       Computer Networks Security      | 17.38/20 (4/4) |
+|           Computer Networks           |   20/20 (4/4)  |
+|           Operating Systems           |  19.9/20 (4/4) |
+
 Research Experience
 ======
 
