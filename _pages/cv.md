@@ -93,7 +93,7 @@ Languages
 
 * Persian: Native
 * English: Advanced
-  * IELTS: 8.0
+  * IELTS: 8.0 (Taken in September 2024)
     * Listening: 8.5
     * Reading: 9.0
     * Writing: 8.0
