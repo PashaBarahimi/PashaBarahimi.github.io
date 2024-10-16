@@ -17,26 +17,28 @@ Education
 * B.Sc. in Computer Engineering, University of Tehran, 2025 (expected)
   * GPA: 19.39/20 (4/4)
   * Rank: 1/90
-* Diploma in Mathematics and Physics, Danesh High School, 2020
-  * GPA: 19.88/20
+
+|              Course Name              |      Grade     |
+|:-------------------------------------:|:--------------:|
+|    Introduction to Cryptocurrencies   |   20/20 (4/4)  |
+| Introduction to Distributed Computing |   20/20 (4/4)  |
+|         Artificial Intelligence       |   20/20 (4/4)  |
+|           Computer Networks           |   20/20 (4/4)  |
+|           Operating Systems           |  19.9/20 (4/4) |
 
 Research Interests
 ======
 
 * Blockchain
 * Distributed Systems
-* Security
+* Security & Privacy
+* Operating Systems and Computer Networks
 
-Related Courses
+Publications
 ======
-
-|              Course Name              |      Grade     |
-|:-------------------------------------:|:--------------:|
-|    Introduction to Cryptocurrencies   |   20/20 (4/4)  |
-| Introduction to Distributed Computing |   20/20 (4/4)  |
-|       Computer Networks Security      | 17.38/20 (4/4) |
-|           Computer Networks           |   20/20 (4/4)  |
-|           Operating Systems           |  19.9/20 (4/4) |
+  <ul>{% for post in site.publications reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
 
 Research Experience
 ======
@@ -99,13 +101,7 @@ Languages
     * Writing: 8.0
     * Speaking: 7.0
 
-<!-- Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-
-Talks
+<!-- Talks
 ======
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}

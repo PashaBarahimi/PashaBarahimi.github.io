@@ -52,6 +52,8 @@
 
     {% if post.location and post.collection == 'projects' or post.collection == 'research' or post.collection == 'work' %}
       <p style="margin-bottom: 8px;"><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>{{ post.location }}</p>
+    {% elsif post.authors %}
+      <p style="margin-bottom: 8px;"><i class="fa-solid" aria-hidden="true"></i>{{ post.authors }}</p>
     {% endif %}
     <hr style="border: 1px solid gray; margin-top: 8px; margin-bottom: 8px;">
 
@@ -61,7 +63,11 @@
           {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i> <!-- , {{ page.date | default: "1900-01-01" | date: "%Y" }} --> </p>
           {% elsif post.collection == 'publications' %}
-          <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+            {% if post.venue %}
+            <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+            {% elsif post.submitted %}
+            <p>Submitted to <i>{{ post.submitted }}</i></p>
+            {% endif %}
           {% elsif post.daterange %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i></strong> {{ post.daterange | default "" }}</p>
           {% elsif post.date %}
