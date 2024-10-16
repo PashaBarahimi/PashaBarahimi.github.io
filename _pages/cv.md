@@ -84,7 +84,7 @@ Skills
 * Programming Languages:
   * Proficient: C++, C#, Python, Golang, SQL
   * Intermediate: Java, Kotlin, Verilog, C, Bash
-  * Basic: Rust, R, JavaScript
+  * Basic: Rust, R, JavaScript, Solidity
 * Technologies: Git, Docker, Kubernetes, Makefile, Ansible, Redis, Django, PostgreSQL, Microsoft Office, LaTeX
 * Operating Systems: Linux (Debian-Based), Microsoft Windows
 
