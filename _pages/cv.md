@@ -32,7 +32,7 @@ Research Interests
 * Blockchain
 * Distributed Systems
 * Security & Privacy
-* Operating Systems and Computer Networks
+* Cryptography
 
 Publications
 ======
