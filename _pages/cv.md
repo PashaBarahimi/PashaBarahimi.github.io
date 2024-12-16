@@ -23,6 +23,7 @@ Education
 |    Introduction to Cryptocurrencies   |   20/20 (4/4)  |
 | Introduction to Distributed Computing |   20/20 (4/4)  |
 |         Artificial Intelligence       |   20/20 (4/4)  |
+|       Foundations of Data Science     |  19.4/20 (4/4) |
 |           Computer Networks           |   20/20 (4/4)  |
 |           Operating Systems           |  19.9/20 (4/4) |
 
@@ -30,7 +31,7 @@ Research Interests
 ======
 
 * Blockchain
-* Distributed Systems
+* Systems
 * Security & Privacy
 * Cryptography
 
@@ -50,10 +51,13 @@ Research Experience
 Honors and Awards
 ======
 
+* 2024 - Direct Admission to MSc Program, Any University in Iran (Declined)
+* 2024 - Ranked 1st in bachelor’s degree among about 90 students (GPA: 19.39/20)
 * 2024 - Ranked 2nd in senior year of Computer Engineering among 90 students (GPA: 19.14/20)
 * 2023 - Ranked 1st in junior year of Computer Engineering among 90 students (GPA: 19.86/20)
 * 2022 - Ranked 1st in sophomore year of Computer Engineering among 90 students (GPA: 19.50/20)
 * 2021 - Ranked 2nd in freshman year of Computer Engineering among 90 students (GPA: 19.01/20)
+* 2021 - University of Tehran Supporters’ Foundation Scholarship ($100/year for 3 years)
 * 2020 - Ranked 161st in University Entrance Exam among over 160,000 participants
 
 Selected Projects
@@ -85,9 +89,9 @@ Skills
 
 * Programming Languages:
   * Proficient: C++, C#, Python, Golang, SQL
-  * Intermediate: Java, Kotlin, Verilog, C, Bash
+  * Intermediate: Java, Kotlin, Verilog, C, Bash, LaTeX
   * Basic: Rust, R, JavaScript, Solidity
-* Technologies: Git, Docker, Kubernetes, Makefile, Ansible, Redis, Django, PostgreSQL, Microsoft Office, LaTeX
+* Technologies: Git, Docker, Kubernetes, Makefile, Ansible, Redis, Django, PostgreSQL, Prometheus, GitLab CI/CD
 * Operating Systems: Linux (Debian-Based), Microsoft Windows
 
 Languages

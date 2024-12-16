@@ -11,11 +11,13 @@ I’m Pasha Barahimi, currently in my senior year studying computer engineering 
 
 ## Research Interests
 
-I’m particularly drawn to **Distributed Systems, Blockchain, Cryptography and Security & Privacy**. Along the way, I’ve taken some key courses that have fueled my interest:
+I’m particularly drawn to **Systems, Blockchain, Cryptography and Security & Privacy**. Along the way, I’ve taken some key courses that have fueled my interest:
 
 - Distributed Computing
 - Introduction to Cryptocurrencies
 - Computer Networks Security
+- Computer Networks
+- Operating Systems
 
 After diving deeper into Computer Networks and Operating Systems during my studies, I found myself increasingly fascinated by how systems work under the hood.
 
