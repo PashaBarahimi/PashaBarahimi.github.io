@@ -22,18 +22,15 @@ Education
 |:-------------------------------------:|:--------------:|
 |    Introduction to Cryptocurrencies   |   20/20 (4/4)  |
 | Introduction to Distributed Computing |   20/20 (4/4)  |
-|         Artificial Intelligence       |   20/20 (4/4)  |
-|       Foundations of Data Science     |  19.4/20 (4/4) |
 |           Computer Networks           |   20/20 (4/4)  |
 |           Operating Systems           |  19.9/20 (4/4) |
 
 Research Interests
 ======
 
-* Blockchain
-* Systems
-* Security & Privacy
-* Cryptography
+* Distributed Systems
+* Computer Networks
+* Operating Systems
 
 Publications
 ======

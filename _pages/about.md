@@ -11,7 +11,7 @@ I’m Pasha Barahimi, currently in my senior year studying computer engineering 
 
 ## Research Interests
 
-I’m particularly drawn to **Systems, Blockchain, Cryptography and Security & Privacy**. Along the way, I’ve taken some key courses that have fueled my interest:
+I’m particularly drawn to **Distributed Systems, Operating Systems, and Computer Networks**. Along the way, I’ve taken some key courses that have fueled my interest:
 
 - Distributed Computing
 - Introduction to Cryptocurrencies
@@ -23,7 +23,7 @@ After diving deeper into Computer Networks and Operating Systems during my studi
 
 In the summer of 2023, I had the amazing opportunity to intern at the Max Planck Institute for Software Systems (MPI-SWS) in Germany. I worked on Model Checking for multi-threaded programs as part of the TruSt algorithm project. This [experience](/research/lincheck) gave me a deeper understanding of Formal Methods and made me realize how important it is to ensure software works correctly, especially in complex, concurrent environments.
 
-More recently, I contributed to a project on enforcing control flow integrity in Ethereum smart contracts, which involved detecting self-reverting storage slots. This [experience](/research/heimdall) reinforced my interest in blockchain security, particularly in using symbolic execution to verify decentralized applications.
+More recently, I contributed to a project on enforcing control flow integrity in Ethereum smart contracts, which involved detecting self-reverting storage slots. This [experience](/research/heimdall) reinforced my interest in distributed systems, particularly in using symbolic execution to verify decentralized applications.
 
 ## Hobbies
 
