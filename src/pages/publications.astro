@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationEntry from '../components/PublicationEntry.astro';
+
+// Drafts are visible while developing, hidden in the production build.
+const all = await getCollection('publications', ({ data }) =>
+  import.meta.env.PROD ? !data.draft : true
+);
+
+// Reverse chronological; ties fall back to filename so ordering is stable.
+const publications = all.sort(
+  (a, b) => b.data.year - a.data.year || a.id.localeCompare(b.id)
+);
+
+// Render each Markdown body once here — most are empty.
+const rendered = await Promise.all(
+  publications.map(async (entry) => {
+    const { Content } = await render(entry);
+    return { entry, Content, hasBody: entry.body?.trim().length > 0 };
+  })
+);
+---
+
+<BaseLayout
+  title="Publications — Jordan Lee"
+  description="Peer-reviewed publications, reverse chronological, with PDF, DOI and code links."
+>
+  <section class="container page">
+    <div class="label">$ ls publications/</div>
+    <h1>Publications</h1>
+    <p class="intro">Reverse chronological. PDF, DOI, and code links where available.</p>
+
+    <div class="list">
+      {
+        rendered.map(({ entry, Content, hasBody }) => (
+          <PublicationEntry entry={entry}>
+            {hasBody && (
+              <div class="body">
+                <Content />
+              </div>
+            )}
+          </PublicationEntry>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: clamp(50px, 8vw, 88px) clamp(70px, 10vw, 120px);
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(30px, 4.5vw, 44px);
+    font-weight: 700;
+    margin: 0 0 12px;
+  }
+
+  .intro {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin: 0 0 48px;
+    max-width: 560px;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

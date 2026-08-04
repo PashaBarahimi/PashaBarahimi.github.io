@@ -1,0 +1,132 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'publications'>;
+}
+
+const { entry } = Astro.props;
+const { title, authors, ownerName, venue, year, tag, links } = entry.data;
+
+// Only the link types present in frontmatter render, in this fixed order.
+const linkOrder = ['pdf', 'doi', 'code', 'slides'] as const;
+const presentLinks = linkOrder
+  .map((kind) => ({ kind, href: links[kind] }))
+  .filter((l): l is { kind: (typeof linkOrder)[number]; href: string } => Boolean(l.href));
+---
+
+<article class="entry">
+  <div class="meta">
+    <span class="year">{year}</span>
+    <span class:list={['tag', tag]}>{tag}</span>
+  </div>
+
+  <h2>{title}</h2>
+
+  <div class="authors">
+    {
+      authors.map((author, i) => (
+        <>
+          {i > 0 && ', '}
+          {author === ownerName ? <strong>{author}</strong> : author}
+        </>
+      ))
+    }
+  </div>
+
+  <div class="venue">{venue}</div>
+
+  {
+    presentLinks.length > 0 && (
+      <div class="links">
+        {presentLinks.map((link) => (
+          <a href={link.href}>{link.kind}</a>
+        ))}
+      </div>
+    )
+  }
+
+  <slot />
+</article>
+
+<style>
+  .entry {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Closes the list with a matching hairline. */
+  .entry:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .meta {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .year {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .tag.security {
+    color: var(--accent);
+    border: 1px solid var(--accent-border);
+  }
+
+  .tag.systems {
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan-border);
+  }
+
+  h2 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    line-height: 1.4;
+  }
+
+  .authors {
+    color: var(--text-secondary);
+    font-size: 14.5px;
+    margin-bottom: 6px;
+  }
+
+  .authors strong {
+    color: var(--text-primary);
+  }
+
+  .venue {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  /* Optional Markdown body — most entries have none. */
+  .entry :global(.body) {
+    color: var(--text-secondary);
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin-top: 14px;
+  }
+</style>
