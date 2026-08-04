@@ -32,6 +32,9 @@
   --grid-line: oklch(1 0 0 / 0.035);
   --sel-bg: oklch(0.78 0.19 150 / 0.35);
   --sel-text: oklch(0.97 0.01 150);
+
+  /* Modal scrim — the same dark wash in both themes, per the reference. */
+  --overlay: oklch(0 0 0 / 0.6);
 }
 
 :root[data-theme='light'] {

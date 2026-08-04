@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, authors, ownerName, venue, year, tag, links } = entry.data;
+const { title, authors, ownerName, venue, year, tag, links, bibtex } = entry.data;
 
 // Only the link types present in frontmatter render, in this fixed order.
 const linkOrder = ['pdf', 'doi', 'code', 'slides'] as const;
@@ -37,11 +37,16 @@ const presentLinks = linkOrder
   <div class="venue">{venue}</div>
 
   {
-    presentLinks.length > 0 && (
+    (presentLinks.length > 0 || bibtex) && (
       <div class="links">
         {presentLinks.map((link) => (
           <a href={link.href}>{link.kind}</a>
         ))}
+        {bibtex && (
+          <button class="cite" type="button" data-bibtex={bibtex} aria-haspopup="dialog">
+            cite
+          </button>
+        )}
       </div>
     )
   }
@@ -120,6 +125,20 @@ const presentLinks = linkOrder
     gap: 16px;
     font-family: var(--font-mono);
     font-size: 13px;
+  }
+
+  .cite {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: var(--accent);
+    cursor: pointer;
+  }
+
+  .cite:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
   }
 
   /* Optional Markdown body — most entries have none. */

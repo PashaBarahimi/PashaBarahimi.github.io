@@ -20,6 +20,8 @@ const rendered = await Promise.all(
     return { entry, Content, hasBody: entry.body?.trim().length > 0 };
   })
 );
+
+const hasAnyBibtex = publications.some((entry) => entry.data.bibtex);
 ---
 
 <BaseLayout
@@ -45,6 +47,21 @@ const rendered = await Promise.all(
       }
     </div>
   </section>
+
+  {
+    hasAnyBibtex && (
+      <dialog id="cite-dialog" aria-label="BibTeX citation">
+        <div class="cite-panel">
+          <div class="cite-head">
+            <span class="cite-file">citation.bib</span>
+            <button id="cite-close" type="button">close ×</button>
+          </div>
+          <pre id="cite-text" tabindex="0" />
+          <button id="cite-copy" type="button">copy</button>
+        </div>
+      </dialog>
+    )
+  }
 </BaseLayout>
 
 <style>
@@ -77,4 +94,124 @@ const rendered = await Promise.all(
     display: flex;
     flex-direction: column;
   }
+
+  /* ---- BibTeX modal ---- */
+
+  #cite-dialog {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: min(560px, calc(100vw - 48px));
+    width: 100%;
+    color: inherit;
+  }
+
+  #cite-dialog::backdrop {
+    background: var(--overlay);
+  }
+
+  .cite-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    padding: 24px;
+  }
+
+  .cite-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .cite-file {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  #cite-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  #cite-close:hover {
+    color: var(--text-primary);
+  }
+
+  #cite-text {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-primary);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 16px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin: 0 0 16px;
+  }
+
+  #cite-copy {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  #cite-copy:hover {
+    background: var(--accent-hover);
+  }
 </style>
+
+<script>
+  // Vanilla port of the cite modal from design-reference/Publications.dc.html.
+  // One shared <dialog> — native Esc-to-close and focus trapping — filled from
+  // the clicked button's data-bibtex.
+  const dialog = document.getElementById('cite-dialog') as HTMLDialogElement | null;
+  const text = document.getElementById('cite-text');
+  const copyBtn = document.getElementById('cite-copy');
+  const closeBtn = document.getElementById('cite-close');
+
+  if (dialog && text && copyBtn && closeBtn) {
+    let resetLabel: ReturnType<typeof setTimeout>;
+
+    document.querySelectorAll<HTMLButtonElement>('button[data-bibtex]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        text.textContent = btn.dataset.bibtex ?? '';
+        copyBtn.textContent = 'copy';
+        clearTimeout(resetLabel);
+        dialog.showModal();
+      });
+    });
+
+    closeBtn.addEventListener('click', () => dialog.close());
+
+    // Clicking the backdrop (the dialog element itself, outside the panel) closes.
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(text.textContent ?? '');
+      } catch {
+        /* clipboard blocked — the text is still selectable in the panel */
+      }
+      copyBtn.textContent = 'copied';
+      clearTimeout(resetLabel);
+      resetLabel = setTimeout(() => {
+        copyBtn.textContent = 'copy';
+      }, 1500);
+    });
+  }
+</script>

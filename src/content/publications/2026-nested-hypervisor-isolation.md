@@ -13,4 +13,11 @@ links:
   doi: '#'
   code: '#'
   slides: '#'
+bibtex: |
+  @inproceedings{lee2026isolating,
+    title     = {Isolating Untrusted Guests: A Fault-Boundary Model for Nested Hypervisors},
+    author    = {Lee, Jordan and Voss, Amara and Patel, R.},
+    booktitle = {USENIX Security Symposium},
+    year      = {2026}
+  }
 ---
