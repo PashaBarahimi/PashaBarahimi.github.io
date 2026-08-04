@@ -1,13 +1,9 @@
-# Placeholder content, lifted verbatim from design-reference/index.dc.html.
-- dateRange: "2023 — present"
+- dateRange: "2025 — present"
   title: "Ph.D., Computer Engineering"
-  institution: "Carnegie Mellon University · Advisor: Prof. Amara Voss"
-  description: "Systems security, hypervisor isolation, side-channel mitigation."
+  institution: "University of Southern California"
+  description: "Distributed systems, operating systems, and computer networks."
 
-- dateRange: "2021 — 2023"
-  title: "M.S., Computer Engineering"
-  institution: "Carnegie Mellon University"
-
-- dateRange: "2017 — 2021"
-  title: "B.S., Computer Science"
-  institution: "University of Illinois Urbana–Champaign"
+- dateRange: "2020 — 2025"
+  title: "B.Sc., Computer Engineering"
+  institution: "University of Tehran, School of ECE"
+  description: "GPA 19.39/20 (4.0/4.0) — ranked 1st among ~90 students. Thesis on analyzing Ethereum transactions in decentralized exchanges."

@@ -9,13 +9,14 @@ const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
 // Meta descriptions want ~155 chars; the bio's first sentence is the natural cut.
 const metaDescription = `${profile.bio.split(/\.\s/)[0]}.`;
 
+// Entries with no URL in profile.yaml are dropped rather than rendered dead.
 const socials = [
-  { label: 'email', href: `mailto:${profile.email}`, glyph: '@', size: 10, round: false },
+  { label: 'email', href: profile.email && `mailto:${profile.email}`, glyph: '@', size: 10, round: false },
   { label: 'github', href: profile.github, glyph: 'gh', size: 9, round: false },
   { label: 'linkedin', href: profile.linkedin, glyph: 'in', size: 9, round: false },
   { label: 'scholar', href: profile.scholar, glyph: 'S', size: 10, round: false },
   { label: 'orcid', href: profile.orcid, glyph: 'iD', size: 8, round: true },
-];
+].filter((s): s is typeof s & { href: string } => Boolean(s.href));
 ---
 
 <BaseLayout title={`${profile.name} — ${profile.tagline}`} description={metaDescription}>
