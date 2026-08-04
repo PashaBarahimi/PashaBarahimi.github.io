@@ -26,3 +26,6 @@ pnpm-debug.log*
 CLAUDE.md
 MILESTONES.md
 design-reference/
+
+# Working files from the old-branch content extraction
+extracted/

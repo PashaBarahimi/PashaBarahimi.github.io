@@ -1,10 +1,39 @@
-# Placeholder content, lifted verbatim from design-reference/index.dc.html.
 - dateRange: "Fall 2024"
-  title: "Teaching Assistant — Operating Systems"
-  institution: "Carnegie Mellon University"
-  description: "Led weekly labs on virtual memory and scheduling; wrote the kernel-panic debugging assignment."
+  title: "Head Teaching Assistant — Introduction to Software Testing"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Ehsan Khamespanah. TA and gradesheet management, computer assignment development and grading, exam grading."
+
+- dateRange: "Fall 2023 — Spring 2024"
+  title: "Head Teaching Assistant — Advanced Programming"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Ramtin Khosravi. TA management, planning and running TA sessions and meetings, judge script development, exam grading."
+
+- dateRange: "Spring 2023 — Spring 2024"
+  title: "Teaching Assistant — Artificial Intelligence"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Yadollah Yaghoobzadeh and Dr. Hakimeh Fadaei. Quiz, homework and computer assignment development and grading, across three semesters."
 
 - dateRange: "Spring 2024"
-  title: "Teaching Assistant — Intro to Computer Systems"
-  institution: "Carnegie Mellon University"
-  description: "Held office hours for 200+ students; graded and revised the buffer-overflow (attack lab) assignment."
+  title: "Teaching Assistant — Systems Analysis and Design"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Ramtin Khosravi. Mentoring and assignment grading."
+
+- dateRange: "Fall 2022 — Fall 2023"
+  title: "Teaching Assistant — Machines and Language Theory"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Hossein Hojjat. Homework development and grading, across three semesters."
+
+- dateRange: "Fall 2022 — Fall 2023"
+  title: "Teaching Assistant — Algorithm Design"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Mohammad Javad Dousti. Homework and computer assignment development, exam grading, troubleshooting sessions."
+
+- dateRange: "Spring 2022 — Spring 2023"
+  title: "Teaching Assistant — Advanced Programming"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Ramtin Khosravi. Computer assignment development and grading, exam grading, across three semesters."
+
+- dateRange: "Fall 2022"
+  title: "Teaching Assistant — Data Structures and Algorithms"
+  institution: "University of Tehran, School of ECE"
+  description: "Prof. Heshaam Faili. Quiz development."

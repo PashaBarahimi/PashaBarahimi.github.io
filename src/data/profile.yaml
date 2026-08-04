@@ -1,22 +1,21 @@
-# Placeholder identity, lifted verbatim from design-reference/index.dc.html.
-# Replaced with real content in M6.
-name: Jordan Lee
-handle: jordan_lee
-terminalHost: guest@jordanlee
+name: Pasha Barahimi
+handle: pasha_barahimi
+terminalHost: guest@pashabarahimi
 terminalCommand: whoami
-tagline: "PhD Student, Computer Engineering — Systems / Security"
+tagline: "PhD Student, Computer Engineering — Distributed Systems / Networks"
 bio: >-
-  I build and break systems — kernels, hypervisors, and the software underneath
-  them. My research looks at where performance and security trade off, and where
-  they don't have to. Before the PhD I shipped low-level infrastructure at
-  companies that cared about both. I write clean code, read papers I disagree
-  with, and keep a terminal open at all times.
-email: jordan.lee@university.edu
-github: https://github.com/jordanlee
-linkedin: https://linkedin.com/in/jordanlee
-scholar: https://scholar.google.com/citations?user=placeholder
-orcid: https://orcid.org/0000-0000-0000-0000
+  I'm a Computer Engineering PhD student at the University of Southern California,
+  working on distributed systems, operating systems and computer networks. I picked up
+  programming in high school and it turned into a degree — I finished my B.Sc. at the
+  University of Tehran ranked first in my class. Along the way I've done model checking
+  for concurrent programs at MPI-SWS, symbolic execution over Ethereum smart contracts
+  at the University of Toronto, and cloud infrastructure and payments work in industry.
+email: pashabarahimi@gmail.com
+github: https://github.com/PashaBarahimi
+linkedin: https://linkedin.com/in/PashaBarahimi
+# Not published anywhere on the old site — the hero omits any link left empty.
+scholar: ""
+orcid: ""
 cvPath: cv.pdf
-# Drop a file in public/ and set e.g. `photo: profile.jpg` to replace the
-# placeholder circle in the hero.
-photo: ""
+# Downscaled from the old site's 720x720 / 780KB PNG to 400x400 WebP (10KB).
+photo: profile.webp

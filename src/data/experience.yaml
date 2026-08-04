@@ -1,14 +1,44 @@
-# Placeholder content, lifted verbatim from design-reference/index.dc.html.
-- dateRange: "Summer 2024"
-  title: "Security Engineering Intern"
-  organization: "Google"
+- dateRange: "Jan 2025 — Dec 2025"
+  title: "Software Engineer"
+  organization: "Okala"
   bullets:
-    - "Built a fuzzing harness for a container runtime component, surfacing 3 memory-safety bugs before release."
-    - "Reduced false positives in an internal static-analysis rule set by 40% through targeted taint refinement."
+    - "Contributed to the platform's payment system."
+    - "Implemented efficient algorithms to meet the real-time requirements of the system."
 
-- dateRange: "Summer 2023"
-  title: "Systems Software Engineer Intern"
-  organization: "AWS (EC2 Nitro)"
+- dateRange: "Oct 2024 — 2025"
+  title: "Bachelor's Thesis"
+  organization: "University of Tehran — Prof. Seyed Pooya Shariatpanahi"
   bullets:
-    - "Profiled and cut hypervisor exit latency by 18% on a hot I/O path via batched interrupt handling."
-    - "Shipped a regression test suite adopted team-wide, catching two boot-time races pre-merge."
+    - "Analyzed Ethereum transactions in decentralized exchanges (DEXs)."
+    - "Detected anomalies and optimized token portfolios to maximize profit."
+
+- dateRange: "Aug 2024 — Sep 2024"
+  title: "Research Intern"
+  organization: "University of Toronto (Remote) — Prof. Fan Long"
+  bullets:
+    - "Developed an efficient Rust algorithm for the Heimdall toolkit to detect self-reverting storage slots — reentrancy guards and cache slots — helping prevent reentrancy vulnerabilities."
+    - "Solved the symbolic-execution problem of unknown storage values being interpreted as zero by supplying initial slot values to the engine."
+    - "Results contributed to \"Enforcing Control Flow Integrity on DeFi Smart Contracts\"."
+
+- dateRange: "Jul 2023 — Sep 2023"
+  title: "Research Intern"
+  organization: "Max Planck Institute for Software Systems (MPI-SWS) — Prof. Rupak Majumdar"
+  bullets:
+    - "Contributed to implementing the TruSt dynamic partial-order reduction algorithm inside Lincheck, a model-checking tool for concurrent data structures on the JVM."
+    - "Documented the challenge of uniquely identifying shared objects under garbage collection, along with possible solutions."
+
+- dateRange: "Oct 2022 — Jan 2024"
+  title: "Junior Software Engineer (Part-Time)"
+  organization: "Sotoon"
+  bullets:
+    - "Contributed to Sotoon's cloud infrastructure and services across three teams."
+    - "Database team: completed mentorship, gaining skills in Kubernetes controllers and PostgreSQL management."
+    - "Security team: maintained and improved HuskyCI, a security test orchestrator, and contributed to the bug-bounty backend."
+    - "Integration team: developed features for the Announcer backend — automated announcements for Zoho, Slack and email — and improved the IAM service."
+
+- dateRange: "Jun 2022 — Sep 2022"
+  title: "SRE Intern (Full-Time)"
+  organization: "Sotoon"
+  bullets:
+    - "Implemented an API gateway, optimizing service interactions and improving scalability."
+    - "Worked with Git, Docker, Kubernetes, Redis, Prometheus, Grafana, Makefile and Ansible."
