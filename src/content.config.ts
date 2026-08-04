@@ -23,4 +23,22 @@ const publications = defineCollection({
   }),
 });
 
-export const collections = { publications };
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+    tags: z.array(z.string()),
+    links: z
+      .object({
+        github: z.string().optional(),
+        demo: z.string().optional(),
+        paper: z.string().optional(),
+      })
+      .default({}),
+    order: z.number().default(0), // manual sort control on the card grid
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { publications, projects };
