@@ -1,72 +1,204 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, education, experience, teaching } from '../data';
 
-// M1 placeholder — a surface for eyeballing the tokens, nav and footer in both
-// themes. Replaced wholesale by the real home page in M2.
-const swatches = [
-  '--bg',
-  '--bg-card',
-  '--text-primary',
-  '--text-secondary',
-  '--text-tertiary',
-  '--border-tag',
-  '--accent',
-  '--accent-hover',
-  '--accent-cyan',
+const base = import.meta.env.BASE_URL;
+const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+
+// Badge glyph / size / shape per link, matching design-reference/index.dc.html.
+const socials = [
+  { label: 'email', href: `mailto:${profile.email}`, glyph: '@', size: 10, round: false },
+  { label: 'github', href: profile.github, glyph: 'gh', size: 9, round: false },
+  { label: 'linkedin', href: profile.linkedin, glyph: 'in', size: 9, round: false },
+  { label: 'scholar', href: profile.scholar, glyph: 'S', size: 10, round: false },
+  { label: 'orcid', href: profile.orcid, glyph: 'iD', size: 8, round: true },
 ];
 ---
 
-<BaseLayout
-  title="jordan_lee — design system check"
-  description="M1 placeholder page for the design system foundation."
->
+<BaseLayout title={`${profile.name} — ${profile.tagline}`} description={profile.bio}>
   <section id="top" class="container hero">
-    <div class="terminal">guest@jordanlee:~$ whoami<span class="cursor">▊</span></div>
-    <h1>Design System</h1>
-    <p class="tagline">M1 — tokens, layout, nav, footer, theme toggle</p>
-    <p class="body">
-      Scaffolding only. The nav is sticky and blurred, the background carries the 42px grid, and
-      the toggle in the top right flips <code>data-theme</code> on <code>&lt;html&gt;</code> and
-      persists it to <code>localStorage</code>. Reload after toggling — there should be no flash
-      of the wrong theme.
-    </p>
+    <div class="hero-aside">
+      {
+        profile.photo ? (
+          <img class="photo" src={asset(profile.photo)} alt={profile.name} width="200" height="200" />
+        ) : (
+          <div class="photo photo-placeholder" role="img" aria-label={`Photo of ${profile.name}`}>
+            <span aria-hidden="true">[photo]</span>
+          </div>
+        )
+      }
+
+      <div class="socials">
+        {
+          socials.map((s) => (
+            <a
+              href={s.href}
+              target={s.href.startsWith('mailto:') ? undefined : '_blank'}
+              rel={s.href.startsWith('mailto:') ? undefined : 'noopener'}
+            >
+              <span
+                class:list={['badge', { round: s.round }]}
+                style={`font-size: ${s.size}px;`}
+                aria-hidden="true"
+              >
+                {s.glyph}
+              </span>
+              {s.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="hero-main">
+      <div class="terminal">
+        {profile.terminalHost}:~$ <span
+          id="typed"
+          data-text={profile.terminalCommand}></span><noscript>{profile.terminalCommand}</noscript><span
+          id="cursor"
+          aria-hidden="true">▊</span>
+      </div>
+
+      <h1>{profile.name}</h1>
+      <p class="tagline">{profile.tagline}</p>
+      <p id="about" class="bio">{profile.bio}</p>
+
+      <a class="cv" href={asset(profile.cvPath)}>↓ {profile.cvPath}</a>
+    </div>
   </section>
 
-  <section class="container block">
-    <div class="label">01 — tokens</div>
-    <h2>Color tokens</h2>
-    <div class="swatches">
+  <section id="education" class="container block">
+    <div class="label">02 — education</div>
+    <h2>Education</h2>
+    <div class="entries">
       {
-        swatches.map((token) => (
-          <div class="swatch">
-            <span class="chip" style={`background: var(${token});`} />
-            <code>{token}</code>
-          </div>
+        education.map((item) => (
+          <article class="dated">
+            <div class="date">{item.dateRange}</div>
+            <div>
+              <h3>{item.title}</h3>
+              <div class="institution">{item.institution}</div>
+              {item.description && <div class="note">{item.description}</div>}
+            </div>
+          </article>
         ))
       }
     </div>
   </section>
 
-  <section class="container block">
-    <div class="label">02 — type</div>
-    <h2>Typography</h2>
-    <p class="body">
-      Body copy is IBM Plex Sans at a fluid size, in <code>--text-secondary</code>. Headings, the
-      section labels above, dates and nav are IBM Plex Mono. This paragraph exists to check
-      line-height, measure and contrast in both themes.
-    </p>
-    <p class="meta">meta / dates use --text-tertiary in mono</p>
-    <p class="body">
-      An <a href="https://example.com">inline link</a> uses <code>--accent</code> and picks up
-      <code>--accent-hover</code> plus an underline on hover. Select this text to check
-      <code>::selection</code>.
-    </p>
+  <section id="experience" class="container block">
+    <div class="label">03 — experience</div>
+    <h2>Work Experience</h2>
+    <div class="entries entries-wide">
+      {
+        experience.map((job) => (
+          <article>
+            <div class="job-head">
+              <h3>
+                {job.title} — {job.organization}
+              </h3>
+              <div class="date">{job.dateRange}</div>
+            </div>
+            <ul class="bullets">
+              {job.bullets.map((b) => (
+                <li>{b}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="teaching" class="container block block-last">
+    <div class="label">04 — teaching</div>
+    <h2>Teaching Experience</h2>
+    <div class="entries">
+      {
+        teaching.map((item) => (
+          <article class="dated">
+            <div class="date">{item.dateRange}</div>
+            <div>
+              <h3>{item.title}</h3>
+              <div class="institution">{item.institution}</div>
+              {item.description && <div class="note">{item.description}</div>}
+            </div>
+          </article>
+        ))
+      }
+    </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* ---- Hero ---- */
+
   .hero {
     padding-block: clamp(60px, 10vw, 120px) clamp(40px, 6vw, 72px);
+    display: flex;
+    gap: clamp(28px, 5vw, 56px);
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 0 0 auto;
+    width: clamp(140px, 18vw, 200px);
+  }
+
+  .photo {
+    width: 100%;
+    height: clamp(140px, 18vw, 200px);
+    border: 1px solid var(--border-tag);
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  .socials {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  .socials a {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+  }
+
+  .badge.round {
+    border-radius: 50%;
+  }
+
+  .hero-main {
+    flex: 1 1 480px;
+    min-width: 280px;
   }
 
   .terminal {
@@ -74,24 +206,6 @@ const swatches = [
     font-size: clamp(13px, 1.4vw, 15px);
     color: var(--text-tertiary);
     margin-bottom: 20px;
-  }
-
-  .cursor {
-    animation: blink 1.1s steps(1, end) infinite;
-  }
-
-  @keyframes blink {
-    0%,
-    45% {
-      opacity: 1;
-    }
-    50%,
-    95% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
   }
 
   h1 {
@@ -110,9 +224,43 @@ const swatches = [
     margin: 0 0 28px;
   }
 
+  .bio {
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 0 32px;
+    scroll-margin-top: 100px;
+  }
+
+  .cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 3px;
+  }
+
+  .cv:hover {
+    background: var(--accent-hover);
+    color: var(--bg);
+    text-decoration: none;
+  }
+
+  /* ---- Sections ---- */
+
   .block {
     padding-block: clamp(40px, 6vw, 64px);
     border-top: 1px solid var(--border);
+  }
+
+  .block-last {
+    padding-bottom: clamp(70px, 10vw, 120px);
   }
 
   .label {
@@ -129,53 +277,91 @@ const swatches = [
     margin: 0 0 32px;
   }
 
-  .body {
-    font-size: clamp(16px, 1.6vw, 18px);
-    line-height: 1.7;
-    color: var(--text-secondary);
-    max-width: 640px;
-    margin: 0 0 20px;
+  .entries {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
   }
 
-  .meta {
+  .entries-wide {
+    gap: 36px;
+  }
+
+  /* Education / Teaching: mono date column + content column. */
+  .dated {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+  }
+
+  .date {
     font-family: var(--font-mono);
     font-size: 13px;
     color: var(--text-tertiary);
-    margin: 0 0 20px;
   }
 
-  code {
-    font-family: var(--font-mono);
-    font-size: 0.9em;
-    color: var(--text-primary);
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
   }
 
-  .swatches {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-  }
-
-  .swatch {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-  }
-
-  .chip {
-    width: 22px;
-    height: 22px;
-    flex: 0 0 auto;
-    border: 1px solid var(--border-tag);
-    border-radius: 2px;
-  }
-
-  .swatch code {
-    font-size: 12px;
+  .institution {
     color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 2px;
+  }
+
+  .note {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  /* Experience: title left, date right, bullets below. */
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .bullets {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.7;
   }
 </style>
+
+<script>
+  // Vanilla port of the hero terminal effect from design-reference/index.dc.html
+  // (Component.componentDidMount): type the command out once at 110ms/char,
+  // blink the cursor on a 550ms interval.
+  const typed = document.getElementById('typed');
+  const cursor = document.getElementById('cursor');
+
+  if (typed && cursor) {
+    const full = typed.dataset.text ?? '';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) {
+      typed.textContent = full;
+    } else {
+      let i = 0;
+      const typeTimer = setInterval(() => {
+        i++;
+        typed.textContent = full.slice(0, i);
+        if (i >= full.length) clearInterval(typeTimer);
+      }, 110);
+
+      let cursorOn = true;
+      setInterval(() => {
+        cursorOn = !cursorOn;
+        cursor.style.opacity = cursorOn ? '1' : '0';
+      }, 550);
+    }
+  }
+</script>

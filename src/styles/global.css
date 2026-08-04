@@ -145,8 +145,11 @@ button {
    Shared layout primitives
    -------------------------------------------------------------------------- */
 
+/* The reference markup is content-box, so its `max-width: 900px` is the column
+   *inside* the gutters. We're border-box globally, so add the gutters back to
+   land on the same 900px content column (and the same divider width). */
 .container {
-  max-width: var(--content-width);
+  max-width: calc(var(--content-width) + var(--gutter) * 2);
   margin-inline: auto;
   padding-inline: var(--gutter);
 }

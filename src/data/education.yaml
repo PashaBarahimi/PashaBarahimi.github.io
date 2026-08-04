@@ -1,0 +1,13 @@
+# Placeholder content, lifted verbatim from design-reference/index.dc.html.
+- dateRange: "2023 — present"
+  title: "Ph.D., Computer Engineering"
+  institution: "Carnegie Mellon University · Advisor: Prof. Amara Voss"
+  description: "Systems security, hypervisor isolation, side-channel mitigation."
+
+- dateRange: "2021 — 2023"
+  title: "M.S., Computer Engineering"
+  institution: "Carnegie Mellon University"
+
+- dateRange: "2017 — 2021"
+  title: "B.S., Computer Science"
+  institution: "University of Illinois Urbana–Champaign"
