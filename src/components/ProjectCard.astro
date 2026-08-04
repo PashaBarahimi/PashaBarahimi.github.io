@@ -1,0 +1,101 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'projects'>;
+}
+
+const { entry } = Astro.props;
+const { name, description, tags, links } = entry.data;
+
+// Only the link types present in frontmatter render, in this fixed order.
+const linkOrder = ['github', 'demo', 'paper'] as const;
+const presentLinks = linkOrder
+  .map((kind) => ({ kind, href: links[kind] }))
+  .filter((l): l is { kind: (typeof linkOrder)[number]; href: string } => Boolean(l.href));
+---
+
+<article class="card">
+  <h2>{name}</h2>
+
+  <p class="description">{description}</p>
+
+  {
+    tags.length > 0 && (
+      <div class="tags">
+        {tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    presentLinks.length > 0 && (
+      <div class="links">
+        {presentLinks.map((link) => (
+          <a href={link.href}>{link.kind}</a>
+        ))}
+      </div>
+    )
+  }
+
+  <slot />
+</article>
+
+<style>
+  .card {
+    border: 1px solid var(--border-strong);
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  h2 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* Grows so the tag/link rows sit flush at the bottom of every card in a row. */
+  .description {
+    color: var(--text-secondary);
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-tag);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .links {
+    display: flex;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding-top: 4px;
+  }
+
+  /* Optional Markdown body — most entries have none. */
+  .card :global(.body) {
+    color: var(--text-secondary);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+</style>
