@@ -1,0 +1,106 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+// Placeholder handle — moves to src/data/profile.yaml in M2.
+const handle = 'jordan_lee';
+
+const base = import.meta.env.BASE_URL;
+const path = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
+const norm = (p: string) => p.replace(/\/+$/, '') || '/';
+
+const home = path('');
+const isHome = norm(Astro.url.pathname) === norm(home);
+
+// In-page anchors on the home page, cross-page links from everywhere else.
+const anchor = (id: string) => (isHome ? `#${id}` : `${home}#${id}`);
+
+const links = [
+  { label: 'about', href: anchor('about') },
+  { label: 'education', href: anchor('education') },
+  { label: 'experience', href: anchor('experience') },
+  { label: 'teaching', href: anchor('teaching') },
+  { label: 'publications', href: path('publications/') },
+  { label: 'projects', href: path('projects/') },
+];
+
+const current = norm(Astro.url.pathname);
+const isCurrent = (href: string) => !href.includes('#') && norm(href) === current;
+---
+
+<nav class="nav">
+  <a class="logo" href={isHome ? '#top' : home}>
+    <span class="prompt">&gt;</span>{handle}
+  </a>
+
+  <div class="links">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class:list={['link', { active: isCurrent(link.href) }]}
+          aria-current={isCurrent(link.href) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: clamp(14px, 2vw, 20px) var(--gutter);
+    background: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .logo:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .prompt {
+    color: var(--accent);
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2.4vw, 28px);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .link {
+    color: inherit;
+  }
+
+  .link:hover {
+    color: var(--accent-hover);
+  }
+
+  .link.active {
+    color: var(--accent);
+  }
+</style>

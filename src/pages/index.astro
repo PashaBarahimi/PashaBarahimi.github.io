@@ -1,16 +1,181 @@
 ---
-// M0 placeholder — replaced by the real home page in M2.
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// M1 placeholder — a surface for eyeballing the tokens, nav and footer in both
+// themes. Replaced wholesale by the real home page in M2.
+const swatches = [
+  '--bg',
+  '--bg-card',
+  '--text-primary',
+  '--text-secondary',
+  '--text-tertiary',
+  '--border-tag',
+  '--accent',
+  '--accent-hover',
+  '--accent-cyan',
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>hello</title>
-	</head>
-	<body>
-		<h1>hello</h1>
-	</body>
-</html>
+<BaseLayout
+  title="jordan_lee — design system check"
+  description="M1 placeholder page for the design system foundation."
+>
+  <section id="top" class="container hero">
+    <div class="terminal">guest@jordanlee:~$ whoami<span class="cursor">▊</span></div>
+    <h1>Design System</h1>
+    <p class="tagline">M1 — tokens, layout, nav, footer, theme toggle</p>
+    <p class="body">
+      Scaffolding only. The nav is sticky and blurred, the background carries the 42px grid, and
+      the toggle in the top right flips <code>data-theme</code> on <code>&lt;html&gt;</code> and
+      persists it to <code>localStorage</code>. Reload after toggling — there should be no flash
+      of the wrong theme.
+    </p>
+  </section>
+
+  <section class="container block">
+    <div class="label">01 — tokens</div>
+    <h2>Color tokens</h2>
+    <div class="swatches">
+      {
+        swatches.map((token) => (
+          <div class="swatch">
+            <span class="chip" style={`background: var(${token});`} />
+            <code>{token}</code>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container block">
+    <div class="label">02 — type</div>
+    <h2>Typography</h2>
+    <p class="body">
+      Body copy is IBM Plex Sans at a fluid size, in <code>--text-secondary</code>. Headings, the
+      section labels above, dates and nav are IBM Plex Mono. This paragraph exists to check
+      line-height, measure and contrast in both themes.
+    </p>
+    <p class="meta">meta / dates use --text-tertiary in mono</p>
+    <p class="body">
+      An <a href="https://example.com">inline link</a> uses <code>--accent</code> and picks up
+      <code>--accent-hover</code> plus an underline on hover. Select this text to check
+      <code>::selection</code>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(60px, 10vw, 120px) clamp(40px, 6vw, 72px);
+  }
+
+  .terminal {
+    font-family: var(--font-mono);
+    font-size: clamp(13px, 1.4vw, 15px);
+    color: var(--text-tertiary);
+    margin-bottom: 20px;
+  }
+
+  .cursor {
+    animation: blink 1.1s steps(1, end) infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    45% {
+      opacity: 1;
+    }
+    50%,
+    95% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(38px, 7vw, 68px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+  }
+
+  .tagline {
+    font-family: var(--font-mono);
+    font-size: clamp(16px, 2.2vw, 20px);
+    color: var(--accent);
+    margin: 0 0 28px;
+  }
+
+  .block {
+    padding-block: clamp(40px, 6vw, 64px);
+    border-top: 1px solid var(--border);
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: var(--font-mono);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 600;
+    margin: 0 0 32px;
+  }
+
+  .body {
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 0 20px;
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin: 0 0 20px;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--text-primary);
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  .swatch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+  }
+
+  .chip {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 auto;
+    border: 1px solid var(--border-tag);
+    border-radius: 2px;
+  }
+
+  .swatch code {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+</style>
