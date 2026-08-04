@@ -1,10 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// NB: CLAUDE.md specifies `src/content/config.ts` with `type: 'content'`. Astro 6
-// removed legacy content collections (LegacyContentConfigError), so this lives at
-// src/content.config.ts and uses the glob loader instead. The Markdown files stay
-// in src/content/publications/ and the schema below is unchanged.
 const publications = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/publications' }),
   schema: z.object({
@@ -22,6 +18,7 @@ const publications = defineCollection({
         slides: z.string().optional(),
       })
       .default({}),
+    bibtex: z.string().optional(), // renders a `cite` button + BibTeX modal when present
     draft: z.boolean().default(false),
   }),
 });
