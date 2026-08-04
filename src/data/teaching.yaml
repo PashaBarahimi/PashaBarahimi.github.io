@@ -1,0 +1,10 @@
+# Placeholder content, lifted verbatim from design-reference/index.dc.html.
+- dateRange: "Fall 2024"
+  title: "Teaching Assistant — Operating Systems"
+  institution: "Carnegie Mellon University"
+  description: "Led weekly labs on virtual memory and scheduling; wrote the kernel-panic debugging assignment."
+
+- dateRange: "Spring 2024"
+  title: "Teaching Assistant — Intro to Computer Systems"
+  institution: "Carnegie Mellon University"
+  description: "Held office hours for 200+ students; graded and revised the buffer-overflow (attack lab) assignment."

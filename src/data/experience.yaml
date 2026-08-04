@@ -1,0 +1,14 @@
+# Placeholder content, lifted verbatim from design-reference/index.dc.html.
+- dateRange: "Summer 2024"
+  title: "Security Engineering Intern"
+  organization: "Google"
+  bullets:
+    - "Built a fuzzing harness for a container runtime component, surfacing 3 memory-safety bugs before release."
+    - "Reduced false positives in an internal static-analysis rule set by 40% through targeted taint refinement."
+
+- dateRange: "Summer 2023"
+  title: "Systems Software Engineer Intern"
+  organization: "AWS (EC2 Nitro)"
+  bullets:
+    - "Profiled and cut hypervisor exit latency by 18% on a hot I/O path via batched interrupt handling."
+    - "Shipped a regression test suite adopted team-wide, catching two boot-time races pre-merge."
