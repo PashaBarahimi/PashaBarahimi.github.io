@@ -71,6 +71,14 @@ const isCurrent = (href: string) => !href.includes('#') && norm(href) === curren
     font-size: 17px;
     color: var(--text-primary);
     text-decoration: none;
+    position: relative;
+  }
+
+  /* 22px tall on its own — just under the 24px minimum target size. */
+  .logo::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
   }
 
   .logo:hover {
@@ -94,6 +102,16 @@ const isCurrent = (href: string) => !href.includes('#') && norm(href) === curren
 
   .link {
     color: inherit;
+    position: relative;
+  }
+
+  /* Expands the touch target to ~28px tall without changing layout — padding
+     would grow the nav bar and diverge from the reference. Kept under the 14px
+     minimum flex gap so adjacent targets never overlap. */
+  .link::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
   }
 
   .link:hover {

@@ -6,6 +6,9 @@ const base = import.meta.env.BASE_URL;
 const asset = (p: string) => `${base}${p}`.replace(/\/{2,}/g, '/');
 
 // Badge glyph / size / shape per link, matching design-reference/index.dc.html.
+// Meta descriptions want ~155 chars; the bio's first sentence is the natural cut.
+const metaDescription = `${profile.bio.split(/\.\s/)[0]}.`;
+
 const socials = [
   { label: 'email', href: `mailto:${profile.email}`, glyph: '@', size: 10, round: false },
   { label: 'github', href: profile.github, glyph: 'gh', size: 9, round: false },
@@ -15,7 +18,7 @@ const socials = [
 ];
 ---
 
-<BaseLayout title={`${profile.name} — ${profile.tagline}`} description={profile.bio}>
+<BaseLayout title={`${profile.name} — ${profile.tagline}`} description={metaDescription}>
   <section id="top" class="container hero">
     <div class="hero-aside">
       {
@@ -164,7 +167,9 @@ const socials = [
     background: var(--bg-card);
     font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--text-tertiary);
+    /* --text-tertiary on --bg-card is only 3.1:1 at this size (axe flagged it);
+       --text-secondary clears AA. */
+    color: var(--text-secondary);
   }
 
   .socials {

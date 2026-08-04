@@ -4,10 +4,15 @@
 // The visible label is driven purely by CSS off <html data-theme>, not by JS
 // text swapping — that's what keeps it in sync with the pre-paint theme-init
 // script in BaseLayout and avoids a flash of the wrong label on load.
+//
+// The accessible name is built from the visually-hidden prefix plus the visible
+// label ("Switch theme, currently dark"). An aria-label would override the
+// visible text instead, which violates WCAG 2.5.3 Label in Name.
 ---
 
-<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch color theme">
+<button id="theme-toggle" class="theme-toggle" type="button">
   <span class="dot" aria-hidden="true"></span>
+  <span class="sr-only">Switch theme, currently&nbsp;</span>
   <span class="label label-dark">dark</span>
   <span class="label label-light">light</span>
 </button>
@@ -25,6 +30,14 @@
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
+    position: relative;
+  }
+
+  /* Same trick as the nav links — bigger touch target, identical visuals. */
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
   }
 
   .theme-toggle:hover {
@@ -62,26 +75,13 @@
   const root = document.documentElement;
   const btn = document.getElementById('theme-toggle');
 
-  if (btn) {
-    const syncLabel = () => {
-      const isLight = root.dataset.theme === 'light';
-      btn.setAttribute(
-        'aria-label',
-        isLight ? 'Switch to dark theme' : 'Switch to light theme'
-      );
-    };
-
-    btn.addEventListener('click', () => {
-      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
-      root.dataset.theme = next;
-      try {
-        localStorage.setItem('site-theme', next);
-      } catch {
-        /* private mode / storage disabled — theme still applies for this page */
-      }
-      syncLabel();
-    });
-
-    syncLabel();
-  }
+  btn?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('site-theme', next);
+    } catch {
+      /* private mode / storage disabled — theme still applies for this page */
+    }
+  });
 </script>

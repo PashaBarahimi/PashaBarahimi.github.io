@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import { profile } from '../data';
 
 // Drafts are visible while developing, hidden in the production build.
 const all = await getCollection('projects', ({ data }) =>
@@ -23,8 +24,8 @@ const rendered = await Promise.all(
 ---
 
 <BaseLayout
-  title="Projects — Jordan Lee"
-  description="Systems and security side projects, with source and demo links."
+  title={`Projects — ${profile.name}`}
+  description={`Systems and security projects by ${profile.name}, with source, demo and paper links where available.`}
   contentWidth="1040px"
 >
   <section class="container page">
