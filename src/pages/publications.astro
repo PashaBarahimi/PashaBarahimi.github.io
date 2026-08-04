@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationEntry from '../components/PublicationEntry.astro';
+import { profile } from '../data';
 
 // Drafts are visible while developing, hidden in the production build.
 const all = await getCollection('publications', ({ data }) =>
@@ -25,8 +26,8 @@ const hasAnyBibtex = publications.some((entry) => entry.data.bibtex);
 ---
 
 <BaseLayout
-  title="Publications — Jordan Lee"
-  description="Peer-reviewed publications, reverse chronological, with PDF, DOI and code links."
+  title={`Publications — ${profile.name}`}
+  description={`Peer-reviewed publications by ${profile.name}, reverse chronological, with PDF, DOI, code and BibTeX for each entry.`}
 >
   <section class="container page">
     <div class="label">$ ls publications/</div>
