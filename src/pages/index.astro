@@ -207,6 +207,33 @@ const socials = [
     min-width: 280px;
   }
 
+  /* Below ~760px the hero's own flex-wrap kicks in (140px aside + gap + the
+     480px basis of .hero-main no longer fit), so the aside is alone on its
+     row. Claim that whole row and lay the photo and contact links out side by
+     side instead of stacked — the width: 100% also pins the wrap in place, so
+     the two rules can't disagree near the boundary. This is the one spot
+     clamp() + flex-wrap can't express on its own: the aside changes axis, not
+     just size. */
+  @media (max-width: 760px) {
+    .hero-aside {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      gap: clamp(20px, 6vw, 32px);
+    }
+
+    .photo {
+      flex: 0 0 auto;
+      width: clamp(110px, 30vw, 160px);
+      height: clamp(110px, 30vw, 160px);
+    }
+
+    .socials {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  }
+
   .terminal {
     font-family: var(--font-mono);
     font-size: clamp(13px, 1.4vw, 15px);
