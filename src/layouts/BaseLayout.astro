@@ -74,9 +74,14 @@ const ogImage = new URL(`${import.meta.env.BASE_URL}og-image.png`, Astro.site);
 
     {/* Runs before first paint so the saved theme is applied with no flash.
         Dark is the default, so only 'light' needs an attribute — but we write
-        either value back so the toggle's CSS state stays explicit. */}
+        either value back so the toggle's CSS state stays explicit.
+
+        The `js` class gates anything that would strand a user without JS — the
+        nav's collapsed mobile menu keys off it, so with scripting disabled the
+        links stay visible instead of hiding behind a dead button. */}
     <script is:inline>
       (function () {
+        document.documentElement.classList.add('js');
         try {
           var saved = localStorage.getItem('site-theme');
           if (saved === 'light' || saved === 'dark') {

@@ -27,24 +27,32 @@ const current = norm(Astro.url.pathname);
 const isCurrent = (href: string) => !href.includes('#') && norm(href) === current;
 ---
 
-<nav class="nav">
+<nav class="nav" id="site-nav">
   <a class="logo" href={isHome ? '#top' : home}>
     <span class="prompt">&gt;</span>{handle}
   </a>
 
-  <div class="links">
-    {
-      links.map((link) => (
-        <a
-          href={link.href}
-          class:list={['link', { active: isCurrent(link.href) }]}
-          aria-current={isCurrent(link.href) ? 'page' : undefined}
-        >
-          {link.label}
-        </a>
-      ))
-    }
+  <div class="nav-right">
+    <div class="links" id="nav-links">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={['link', { active: isCurrent(link.href) }]}
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+
     <ThemeToggle />
+
+    <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">
+      <span class="glyph" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
   </div>
 </nav>
 
@@ -90,6 +98,16 @@ const isCurrent = (href: string) => !href.includes('#') && norm(href) === curren
     color: var(--accent);
   }
 
+  /* Links and the theme toggle used to be one flex row; they're separate boxes
+     now so the toggle can stay in the bar while the links collapse. The shared
+     gap keeps the wide layout pixel-identical to before. */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2.4vw, 28px);
+    flex-wrap: wrap;
+  }
+
   .links {
     display: flex;
     align-items: center;
@@ -121,4 +139,180 @@ const isCurrent = (href: string) => !href.includes('#') && norm(href) === curren
   .link.active {
     color: var(--accent);
   }
+
+  /* ---- Mobile menu ---- */
+
+  /* Hidden until the narrow layout needs it; same border/size language as the
+     theme-toggle pill so the two read as one control cluster. */
+  .menu-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 28px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border-tag);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    position: relative;
+  }
+
+  .menu-btn::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+  }
+
+  .menu-btn:hover {
+    color: var(--text-primary);
+  }
+
+  /* Three hairlines drawn from the span and its two pseudo-elements. */
+  .glyph,
+  .glyph::before,
+  .glyph::after {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: currentColor;
+  }
+
+  .glyph {
+    position: relative;
+  }
+
+  .glyph::before,
+  .glyph::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .glyph::before {
+    top: -5px;
+  }
+
+  .glyph::after {
+    top: 5px;
+  }
+
+  /* Open: middle line drops out, the outer two cross into an X. Swapped, not
+     transitioned — the design keeps motion to hover states only. */
+  .nav[data-open] .glyph {
+    background: transparent;
+  }
+
+  .nav[data-open] .glyph::before,
+  .nav[data-open] .glyph::after {
+    top: 0;
+  }
+
+  .nav[data-open] .glyph::before {
+    transform: rotate(45deg);
+  }
+
+  .nav[data-open] .glyph::after {
+    transform: rotate(-45deg);
+  }
+
+  /* Below this the nav spills onto three lines (links wrap, then the toggle
+     drops to a row of its own). Between 640px and ~840px it still sits as two
+     tidy lines, so that range keeps the inline nav.
+
+     Everything here is gated on html.js: with scripting off the button would be
+     dead, so the links stay inline and the button stays hidden instead. */
+  @media (max-width: 640px) {
+    :global(html.js) .menu-btn {
+      display: inline-flex;
+    }
+
+    /* Drops out of the bar's flex row into a panel under it. The nav is sticky,
+       so absolute positioning anchors to the bar and spans the full width. */
+    :global(html.js) .links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding-inline: var(--gutter);
+      max-height: 70vh;
+      overflow-y: auto;
+      /* Opaque, not the bar's translucent --bg-nav: the panel sits inside the
+         nav's own backdrop-filter root, so it has no backdrop left to blur and
+         a see-through panel just shows the page straight through. */
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    :global(html.js) .nav[data-open] .links {
+      display: flex;
+    }
+
+    /* Real padding here instead of the inset::after trick — the row is the
+       target now, and the hairlines need something to separate. */
+    :global(html.js) .links .link {
+      padding-block: 13px;
+    }
+
+    :global(html.js) .links .link::after {
+      inset: 0;
+    }
+
+    :global(html.js) .links .link + .link {
+      border-top: 1px solid var(--border);
+    }
+  }
 </style>
+
+<script>
+  // Collapsed-nav behaviour. State lives in one place — `data-open` on the nav
+  // drives the CSS; aria-expanded mirrors it for assistive tech.
+  const nav = document.getElementById('site-nav');
+  const btn = document.getElementById('menu-btn');
+
+  if (nav && btn) {
+    const setOpen = (open: boolean) => {
+      nav.toggleAttribute('data-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    };
+
+    btn.addEventListener('click', () => setOpen(!nav.hasAttribute('data-open')));
+
+    // Anchor links don't navigate away, so nothing else would close the panel.
+    nav.querySelectorAll('.links a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hasAttribute('data-open')) {
+        setOpen(false);
+        btn.focus();
+      }
+    });
+
+    // Growing past the breakpoint restores the inline nav in CSS, but the open
+    // state would survive and spring the panel back on the way down. Keep this
+    // query in step with the one in the stylesheet above.
+    const narrow = window.matchMedia('(max-width: 640px)');
+    narrow.addEventListener('change', (e) => {
+      if (!e.matches) setOpen(false);
+    });
+
+    // Tapping the page behind the panel dismisses it. The button lives inside
+    // the nav, so its own click never reaches this branch.
+    document.addEventListener('click', (e) => {
+      if (
+        nav.hasAttribute('data-open') &&
+        e.target instanceof Node &&
+        !nav.contains(e.target)
+      ) {
+        setOpen(false);
+      }
+    });
+  }
+</script>
