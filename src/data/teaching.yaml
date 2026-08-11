@@ -1,41 +1,52 @@
 # Terms are listed individually rather than as ranges — several of these
 # weren't taught in consecutive semesters.
+#
+# `level` is "undergraduate" or "graduate" and is required on every entry; it
+# renders as the pill next to the course title.
 - dateRange: "Fall 2024"
   title: "Head Teaching Assistant — Introduction to Software Testing"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "TA and gradesheet management, computer assignment development and grading, exam grading."
 
 - dateRange: "Fall 2023, Spring 2024"
   title: "Head Teaching Assistant — Advanced Programming"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "TA management, planning and running TA sessions and meetings, judge script development, exam grading."
 
 - dateRange: "Spring 2023, Fall 2023, Spring 2024"
   title: "Teaching Assistant — Artificial Intelligence"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "Quiz, homework and computer assignment development and grading."
 
 - dateRange: "Spring 2024"
   title: "Teaching Assistant — Systems Analysis and Design"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "Mentoring and assignment grading."
 
 - dateRange: "Fall 2022, Spring 2023, Fall 2023"
   title: "Teaching Assistant — Machines and Language Theory"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "Homework development and grading."
 
 - dateRange: "Fall 2022, Fall 2023"
   title: "Teaching Assistant — Algorithm Design"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "Homework and computer assignment development, exam grading, troubleshooting sessions."
 
 - dateRange: "Spring 2022, Fall 2022, Spring 2023"
   title: "Teaching Assistant — Advanced Programming"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "Computer assignment development and grading, exam grading."
 
 - dateRange: "Fall 2022"
   title: "Teaching Assistant — Data Structures and Algorithms"
   institution: "University of Tehran, School of ECE"
+  level: undergraduate
   description: "Quiz development."

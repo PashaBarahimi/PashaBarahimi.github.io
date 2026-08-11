@@ -31,6 +31,11 @@ export interface DatedEntry {
   description?: string;
 }
 
+/** Teaching entries also record who the course was taught to. */
+export interface TeachingEntry extends DatedEntry {
+  level: 'undergraduate' | 'graduate';
+}
+
 export interface ExperienceEntry {
   dateRange: string;
   title: string;
@@ -41,4 +46,4 @@ export interface ExperienceEntry {
 export const profile = profileData as Profile;
 export const education = educationData as DatedEntry[];
 export const experience = experienceData as ExperienceEntry[];
-export const teaching = teachingData as DatedEntry[];
+export const teaching = teachingData as TeachingEntry[];

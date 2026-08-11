@@ -128,7 +128,10 @@ const socials = [
               <DateTerms value={item.dateRange} />
             </div>
             <div>
-              <h3>{item.title}</h3>
+              <div class="course-head">
+                <h3>{item.title}</h3>
+                <span class="level">{item.level}</span>
+              </div>
               <div class="institution">{item.institution}</div>
               {item.description && <div class="note">{item.description}</div>}
             </div>
@@ -342,6 +345,29 @@ const socials = [
     font-size: 17px;
     font-weight: 600;
     margin: 0;
+  }
+
+  /* Teaching only: course title with its audience pill alongside. Wraps to its
+     own line rather than squeezing the title on narrow columns. */
+  .course-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+
+  /* Neutral rather than accent-coloured — it labels the course, it isn't a
+     status worth pulling the eye off the title. --text-secondary, not the
+     quieter --text-tertiary: at 11px tertiary measures 3.24:1 on --bg in dark,
+     short of AA. */
+  .level {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-tag);
+    border-radius: 3px;
+    padding: 2px 7px;
+    white-space: nowrap;
   }
 
   .institution {
