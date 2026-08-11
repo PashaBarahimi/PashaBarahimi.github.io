@@ -11,6 +11,5 @@ authors:
 ownerName: P. Barahimi
 venue: 'Submitted to IEEE/ACM International Conference on Software Engineering (ICSE) 2026'
 year: 2026
-tag: security
 links: {}
 ---

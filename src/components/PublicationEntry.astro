@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, authors, ownerName, venue, year, tag, links, bibtex } = entry.data;
+const { title, authors, ownerName, venue, year, links, bibtex } = entry.data;
 
 // Only the link types present in frontmatter render, in this fixed order.
 const linkOrder = ['pdf', 'doi', 'code', 'slides'] as const;
@@ -16,10 +16,7 @@ const presentLinks = linkOrder
 ---
 
 <article class="entry">
-  <div class="meta">
-    <span class="year">{year}</span>
-    <span class:list={['tag', tag]}>{tag}</span>
-  </div>
+  <div class="year">{year}</div>
 
   <h2>{title}</h2>
 
@@ -65,35 +62,11 @@ const presentLinks = linkOrder
     border-bottom: 1px solid var(--border);
   }
 
-  .meta {
-    display: flex;
-    gap: 12px;
-    align-items: baseline;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
-  }
-
   .year {
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--text-tertiary);
-  }
-
-  .tag {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 2px;
-  }
-
-  .tag.security {
-    color: var(--accent);
-    border: 1px solid var(--accent-border);
-  }
-
-  .tag.systems {
-    color: var(--accent-cyan);
-    border: 1px solid var(--accent-cyan-border);
+    margin-bottom: 8px;
   }
 
   h2 {

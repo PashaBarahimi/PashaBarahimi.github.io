@@ -14,7 +14,6 @@ const publications = defineCollection({
     ownerName: z.string(), // exact string to bold in the author line
     venue: z.string(),
     year: z.number(),
-    tag: z.enum(['security', 'systems']),
     links: z
       .object({
         pdf: z.string().optional(),
