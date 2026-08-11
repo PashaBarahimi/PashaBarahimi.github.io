@@ -18,7 +18,7 @@ const publications = all.sort(
 const rendered = await Promise.all(
   publications.map(async (entry) => {
     const { Content } = await render(entry);
-    return { entry, Content, hasBody: entry.body?.trim().length > 0 };
+    return { entry, Content, hasBody: (entry.body?.trim().length ?? 0) > 0 };
   })
 );
 

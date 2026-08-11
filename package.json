@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -17,6 +18,8 @@
     "astro": "^7.1.6"
   },
   "devDependencies": {
-    "@rollup/plugin-yaml": "^5.0.0"
+    "@astrojs/check": "^0.9.10",
+    "@rollup/plugin-yaml": "^5.0.0",
+    "typescript": "^6.0.3"
   }
 }

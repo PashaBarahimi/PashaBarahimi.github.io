@@ -18,7 +18,7 @@ const projects = all.sort(
 const rendered = await Promise.all(
   projects.map(async (entry) => {
     const { Content } = await render(entry);
-    return { entry, Content, hasBody: entry.body?.trim().length > 0 };
+    return { entry, Content, hasBody: (entry.body?.trim().length ?? 0) > 0 };
   })
 );
 ---
