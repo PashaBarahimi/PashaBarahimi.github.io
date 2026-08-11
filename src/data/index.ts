@@ -40,6 +40,9 @@ export interface ExperienceEntry {
   dateRange: string;
   title: string;
   organization: string;
+  /** Both render as their own item in the meta line, and are skipped if empty. */
+  location?: string;
+  supervisor?: string;
   bullets: string[];
 }
 

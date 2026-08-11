@@ -95,7 +95,7 @@ const socials = [
 
   <section id="experience" class="container block">
     <div class="label">03 — experience</div>
-    <h2>Work Experience</h2>
+    <h2>Research &amp; Work Experience</h2>
     <div class="entries entries-wide">
       {
         experience.map((job) => (
@@ -106,6 +106,12 @@ const socials = [
               </h3>
               <div class="date">{job.dateRange}</div>
             </div>
+            {(job.location || job.supervisor) && (
+              <div class="job-meta">
+                {job.location && <span class="meta-item">{job.location}</span>}
+                {job.supervisor && <span class="meta-item">Supervisor: {job.supervisor}</span>}
+              </div>
+            )}
             <ul class="bullets">
               {job.bullets.map((b) => (
                 <li>{b}</li>
@@ -389,6 +395,22 @@ const socials = [
     flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 10px;
+  }
+
+  /* Location and supervisor, each its own item: side by side when they fit, on
+     separate lines when they don't. No "·" between them — as inline content it
+     leads the second line whenever the row wraps, and the gap plus the
+     "Supervisor:" label already keep the two apart. */
+  .job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 24px;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    /* --text-secondary, not the --text-tertiary used by the date column: at
+       13px tertiary measures 3.24:1 on --bg in dark, short of AA. */
+    color: var(--text-secondary);
   }
 
   .bullets {
