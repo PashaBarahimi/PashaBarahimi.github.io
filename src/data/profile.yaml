@@ -13,9 +13,8 @@ bio: >-
 email: pashabarahimi@gmail.com
 github: https://github.com/PashaBarahimi
 linkedin: https://linkedin.com/in/PashaBarahimi
-# Not published anywhere on the old site — the hero omits any link left empty.
-scholar: ""
-orcid: ""
+scholar: https://scholar.google.com/citations?user=HRFc31IAAAAJ
+orcid: https://orcid.org/0009-0005-6803-0438
 cvPath: cv.pdf
 # Downscaled from the old site's 720x720 / 780KB PNG to 400x400 WebP (10KB).
 photo: profile.webp
