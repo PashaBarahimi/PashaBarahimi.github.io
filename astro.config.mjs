@@ -4,10 +4,13 @@ import yaml from '@rollup/plugin-yaml';
 
 // https://astro.build/config
 export default defineConfig({
-  // User/organization page: https://PashaBarahimi.github.io is served from the
-  // domain root, so no `base` subpath is needed (a project page would need
-  // `base: '/<repo-name>'`).
-  site: 'https://pashabarahimi.github.io',
+  // Custom domain, served from its root, so no `base` subpath is needed (a
+  // project page would need `base: '/<repo-name>'`). This value only feeds the
+  // absolute URLs — canonical, og:url, og:image — so it has to match the domain
+  // visitors actually land on, otherwise link previews point at the old host.
+  // The domain itself is configured by public/CNAME plus the repo's Pages
+  // settings; https://pashabarahimi.github.io redirects here.
+  site: 'https://pasha.barahimi.me',
   output: 'static',
   vite: {
     // Lets pages `import education from '../data/education.yaml'`.
