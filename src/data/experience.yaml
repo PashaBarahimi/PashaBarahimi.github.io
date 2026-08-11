@@ -4,15 +4,15 @@
 #
 # `location` exists to flag remote work, not to give a mailing address: set it
 # to "Remote" where that applies and leave it off otherwise, since on-site means
-# the organization already named on the title line. No city/country.
+# the organization already named on the place line. No city/country.
 - dateRange: "Jan 2025 — Dec 2025"
-  title: "Software Engineer"
+  title: "Mid-Level Software Engineer (Full-Time)"
   organization: "Okala"
   bullets:
     - "Contributed to the platform's payment system."
     - "Implemented efficient algorithms to meet the real-time requirements of the system."
 
-- dateRange: "Oct 2024 — 2025"
+- dateRange: "Oct 2024 — Sep 2025"
   title: "Bachelor's Thesis"
   organization: "University of Tehran"
   supervisor: "Prof. Seyed Pooya Shariatpanahi"
