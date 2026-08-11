@@ -101,17 +101,31 @@ const socials = [
         experience.map((job) => (
           <article>
             <div class="job-head">
-              <h3>
-                {job.title} — {job.organization}
-              </h3>
+              <h3>{job.title}</h3>
               <div class="date">{job.dateRange}</div>
             </div>
-            {(job.location || job.supervisor) && (
-              <div class="job-meta">
-                {job.location && <span class="meta-item">{job.location}</span>}
-                {job.supervisor && <span class="meta-item">Supervisor: {job.supervisor}</span>}
-              </div>
-            )}
+            <div class="place">
+              <svg
+                class="pin"
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>
+                {job.organization}
+                {job.location ? ` (${job.location})` : ''}
+              </span>
+            </div>
+            {job.supervisor && <div class="job-meta">Supervisor: {job.supervisor}</div>}
             <ul class="bullets">
               {job.bullets.map((b) => (
                 <li>{b}</li>
@@ -394,17 +408,32 @@ const socials = [
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
-  /* Location and supervisor, each its own item: side by side when they fit, on
-     separate lines when they don't. No "·" between them — as inline content it
-     leads the second line whenever the row wraps, and the gap plus the
-     "Supervisor:" label already keep the two apart. */
-  .job-meta {
+  /* Where the role was: organization on its own line under the title, with a
+     map pin. `location` rides along as a parenthetical rather than a separate
+     item — it only ever says "Remote", which belongs with the place, and a
+     parenthetical can't strand a separator at the start of a wrapped line. */
+  .place {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2px 24px;
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  /* Holds its size and stays level with the first line when a long
+     organization name wraps — centring it would park the pin in the gap
+     between the two lines. */
+  .pin {
+    flex: 0 0 auto;
+    margin-top: 4px;
+    color: var(--text-tertiary);
+  }
+
+  .job-meta {
     margin-bottom: 10px;
     font-family: var(--font-mono);
     font-size: 13px;
