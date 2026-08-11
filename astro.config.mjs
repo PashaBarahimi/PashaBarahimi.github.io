@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import yaml from '@rollup/plugin-yaml';
 
 // https://astro.build/config
@@ -12,6 +13,10 @@ export default defineConfig({
   // settings; https://pashabarahimi.github.io redirects here.
   site: 'https://pasha.barahimi.me',
   output: 'static',
+  // Emits sitemap-index.xml + sitemap-0.xml at build, with URLs derived from
+  // `site` above. Generated rather than hand-written so it can't drift as pages
+  // are added. public/robots.txt points crawlers at it.
+  integrations: [sitemap()],
   vite: {
     // Lets pages `import education from '../data/education.yaml'`.
     // Build-time only — nothing ships to the client.
