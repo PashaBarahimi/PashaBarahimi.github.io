@@ -1,5 +1,10 @@
-import { defineCollection, z } from 'astro:content';
+// `z` used to be re-exported from 'astro:content', which is now deprecated —
+// import zod directly. It's the same instance either way: one hoisted zod
+// satisfies Astro's own dependency, so schemas keep validating identically.
+// Build-time only, hence a devDependency.
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { z } from 'zod';
 
 const publications = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/publications' }),
