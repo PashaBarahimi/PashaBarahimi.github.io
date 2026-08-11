@@ -1,10 +1,13 @@
 # `location` and `supervisor` are optional — each renders as its own item in
 # the meta line under the role, and is dropped when empty. `organization` holds
 # the employer or institution alone; supervisors used to be appended to it.
+#
+# `location` exists to flag remote work, not to give a mailing address: set it
+# to "Remote" where that applies and leave it off otherwise, since on-site means
+# the organization already named on the title line. No city/country.
 - dateRange: "Jan 2025 — Dec 2025"
   title: "Software Engineer"
   organization: "Okala"
-  location: ""
   bullets:
     - "Contributed to the platform's payment system."
     - "Implemented efficient algorithms to meet the real-time requirements of the system."
@@ -12,7 +15,6 @@
 - dateRange: "Oct 2024 — 2025"
   title: "Bachelor's Thesis"
   organization: "University of Tehran"
-  location: "Tehran, Iran"
   supervisor: "Prof. Seyed Pooya Shariatpanahi"
   bullets:
     - "Analyzed Ethereum transactions in decentralized exchanges (DEXs)."
@@ -31,7 +33,6 @@
 - dateRange: "Jul 2023 — Sep 2023"
   title: "Research Intern"
   organization: "Max Planck Institute for Software Systems (MPI-SWS)"
-  location: ""
   supervisor: "Prof. Rupak Majumdar"
   bullets:
     - "Contributed to implementing the TruSt dynamic partial-order reduction algorithm inside Lincheck, a model-checking tool for concurrent data structures on the JVM."
@@ -40,7 +41,6 @@
 - dateRange: "Oct 2022 — Jan 2024"
   title: "Junior Software Engineer (Part-Time)"
   organization: "Sotoon"
-  location: "Tehran, Iran"
   bullets:
     - "Contributed to Sotoon's cloud infrastructure and services across three teams."
     - "Database team: completed mentorship, gaining skills in Kubernetes controllers and PostgreSQL management."
@@ -50,7 +50,6 @@
 - dateRange: "Jun 2022 — Sep 2022"
   title: "SRE Intern (Full-Time)"
   organization: "Sotoon"
-  location: "Tehran, Iran"
   bullets:
     - "Implemented an API gateway, optimizing service interactions and improving scalability."
     - "Worked with Git, Docker, Kubernetes, Redis, Prometheus, Grafana, Makefile and Ansible."
