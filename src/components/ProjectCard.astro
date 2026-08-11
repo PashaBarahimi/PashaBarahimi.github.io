@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { name, description, tags, links } = entry.data;
+const { name, description, languages, tags, links } = entry.data;
 
 // Only the link types present in frontmatter render, in this fixed order.
 const linkOrder = ['github', 'demo', 'paper'] as const;
@@ -19,6 +19,19 @@ const presentLinks = linkOrder
   <h2>{name}</h2>
 
   <p class="description">{description}</p>
+
+  {
+    languages.length > 0 && (
+      <div class="languages">
+        {languages.map((language) => (
+          <span class="language">
+            <span class="dot" aria-hidden="true" />
+            {language}
+          </span>
+        ))}
+      </div>
+    )
+  }
 
   {
     tags.length > 0 && (
@@ -67,6 +80,33 @@ const presentLinks = linkOrder
     line-height: 1.6;
     margin: 0;
     flex: 1;
+  }
+
+  /* Language sits above the tech tags and deliberately doesn't look like one:
+     an accent dot and plain text rather than a bordered pill, so "what it's
+     written in" reads differently from "what it touches". */
+  .languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .language {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--accent);
   }
 
   .tags {

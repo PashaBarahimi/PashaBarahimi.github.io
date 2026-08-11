@@ -32,6 +32,9 @@ const projects = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string(),
+    // Implementation languages, kept out of `tags` so they can render as their
+    // own section. A list because a project can be written in more than one.
+    languages: z.array(z.string()).default([]),
     tags: z.array(z.string()),
     links: z
       .object({

@@ -1,8 +1,9 @@
 ---
 name: Cryptocurrency Projects
 description: Generating wallet credentials and vanity addresses, building valid transactions on the Bitcoin testnet, and mining a Bitcoin block containing a single transaction.
+languages:
+  - Python
 tags:
-  - python
   - bitcoin
   - cryptography
 links:
