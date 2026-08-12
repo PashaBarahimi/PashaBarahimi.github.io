@@ -1,14 +1,15 @@
 ---
-name: Bachelor's Thesis — Ethereum DEX Analysis
-description: Analysis of Ethereum transactions on decentralized exchanges — detecting anomalous trading activity and optimizing token portfolios for profit. Bachelor's thesis at the University of Tehran.
+name: Analysis of Data from Decentralized Exchanges and AMMs
+description: Bachelor's thesis. 44.9M Uniswap swaps on Ethereum (v2–v4) collected through a purpose-built GraphQL scraper into SQLite and processed with Apache Spark, then mined for anomalous market behavior — wash trading, arbitrage, bot-like repeated swaps — and used to predict hourly price direction for five actively traded tokens at 62–66% test accuracy.
 category: research
 featured: true
 languages:
   - Python
 tags:
-  - ethereum
-  - dex
+  - uniswap
+  - spark
   - anomaly-detection
+  - machine-learning
 links: {}
 # Between the ICSE paper and the Lincheck work: the most recent research, but
 # the published paper still leads the section.

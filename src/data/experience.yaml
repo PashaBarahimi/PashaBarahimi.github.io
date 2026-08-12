@@ -13,12 +13,13 @@
     - "Implemented efficient algorithms to meet the real-time requirements of the system."
 
 - dateRange: "Oct 2024 — Sep 2025"
-  title: "Bachelor's Thesis"
+  title: "Bachelor's Thesis — Analysis of Data from Decentralized Exchanges and Automated Market Makers"
   organization: "University of Tehran"
   supervisor: "Prof. Seyed Pooya Shariatpanahi"
   bullets:
-    - "Analyzed Ethereum transactions in decentralized exchanges (DEXs)."
-    - "Detected anomalies and optimized token portfolios to maximize profit."
+    - "Collected and analyzed 44.9M Uniswap swaps on Ethereum across protocol versions v2–v4, through a purpose-built GraphQL scraper feeding a SQLite store processed with Apache Spark."
+    - "Detected anomalous market behavior: wash trading, arbitrage patterns, bot-like repeated swaps at short intervals, and USD-value outliers."
+    - "Predicted hourly price direction for five actively traded tokens using XGBoost, LightGBM and random forests, reaching 62–66% test accuracy against a balanced ~50% baseline."
 
 - dateRange: "Aug 2024 — Sep 2024"
   title: "Research Intern"
