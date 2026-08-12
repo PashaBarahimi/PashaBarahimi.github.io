@@ -4,6 +4,7 @@ description: Sensor-driven IoT coursework spanning Qt desktop software, Arduino 
 category: coursework
 languages:
   - C++
+  - QML
 tags:
   - arduino
   - qt

@@ -5,7 +5,6 @@ category: coursework
 featured: true
 languages:
   - Python
-  - Bash
 tags:
   - openssl
   - security

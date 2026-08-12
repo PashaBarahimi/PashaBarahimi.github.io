@@ -4,6 +4,7 @@ description: MIPS processor implementations — single-cycle, multi-cycle and pi
 category: coursework
 languages:
   - Verilog
+  - C++
 tags:
   - mips
   - cpu
