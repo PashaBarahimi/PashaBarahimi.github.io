@@ -9,7 +9,14 @@ const { entry } = Astro.props;
 const { name, description, languages, tags, links } = entry.data;
 
 // Only the link types present in frontmatter render, in this fixed order.
+// The label is what the link leads to, not where it's hosted — hence `code`
+// for the repository, matching the publication entries' link row.
 const linkOrder = ['github', 'demo', 'paper'] as const;
+const linkLabels: Record<(typeof linkOrder)[number], string> = {
+  github: 'code',
+  demo: 'demo',
+  paper: 'paper',
+};
 const presentLinks = linkOrder
   .map((kind) => ({ kind, href: links[kind] }))
   .filter((l): l is { kind: (typeof linkOrder)[number]; href: string } => Boolean(l.href));
@@ -47,7 +54,7 @@ const presentLinks = linkOrder
     presentLinks.length > 0 && (
       <div class="links">
         {presentLinks.map((link) => (
-          <a href={link.href}>{link.kind}</a>
+          <a href={link.href}>{linkLabels[link.kind]}</a>
         ))}
       </div>
     )
