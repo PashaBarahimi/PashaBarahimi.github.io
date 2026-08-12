@@ -1,6 +1,8 @@
 ---
 name: Operating Systems Projects
 description: Socket programming, a MapReduce implementation built on Unix pipes, and multithreading.
+category: coursework
+featured: true
 languages:
   - C
   - C++

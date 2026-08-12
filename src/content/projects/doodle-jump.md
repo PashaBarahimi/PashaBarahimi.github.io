@@ -1,6 +1,7 @@
 ---
 name: Doodle Jump
 description: A Doodle Jump clone built with the SDL library for the Advanced Programming course.
+category: coursework
 languages:
   - C++
 tags:

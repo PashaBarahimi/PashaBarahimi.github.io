@@ -1,6 +1,7 @@
 ---
 name: Database Lab Projects
 description: Relational, graph, document and key-value stores — ER modelling and SQL from CRUD through to advanced queries, alongside Neo4j, MongoDB, Elasticsearch and Redis.
+category: coursework
 languages:
   - SQL
   - Python

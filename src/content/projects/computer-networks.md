@@ -1,6 +1,8 @@
 ---
 name: Computer Networks Projects
 description: Socket programming, a wireless LAN simulation in NS-3, distance-vector and link-state routing protocols, and a comparison of the BBR, Reno and NewReno TCP congestion control algorithms.
+category: coursework
+featured: true
 languages:
   - C++
 tags:

@@ -1,6 +1,7 @@
 ---
 name: GoodEats Web
 description: A GoodEats web application written in C++ for the Advanced Programming course.
+category: coursework
 languages:
   - C++
 tags:

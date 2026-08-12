@@ -1,6 +1,7 @@
 ---
 name: Cyber-Physical Systems Projects
 description: Sensor-driven IoT coursework spanning Qt desktop software, Arduino firmware and an Android client.
+category: coursework
 languages:
   - C++
 tags:

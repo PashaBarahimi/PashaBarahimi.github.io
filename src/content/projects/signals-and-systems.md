@@ -1,6 +1,7 @@
 ---
 name: Signals and Systems Projects
 description: Persian and English license plate detection, and transmitting data over signals.
+category: coursework
 languages:
   - MATLAB
 tags:

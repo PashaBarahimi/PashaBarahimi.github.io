@@ -1,6 +1,7 @@
 ---
 name: Digital Logic Design Lab
 description: Clock and periodic signal generation, an FPGA realization of a radix-4 multiplier, a function generator, and accelerator wrappers.
+category: coursework
 languages:
   - Verilog
 tags:

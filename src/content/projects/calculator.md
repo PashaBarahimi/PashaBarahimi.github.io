@@ -1,6 +1,7 @@
 ---
 name: GUI Calculator
 description: A desktop calculator with a graphical interface, written while self-studying Python.
+category: personal
 languages:
   - Python
 tags:

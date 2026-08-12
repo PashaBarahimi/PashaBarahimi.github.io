@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { name, description, languages, tags, links } = entry.data;
+const { name, description, featured, languages, tags, links } = entry.data;
 
 // Only the link types present in frontmatter render, in this fixed order.
 // The label is what the link leads to, not where it's hosted — hence `code`
@@ -23,7 +23,24 @@ const presentLinks = linkOrder
 ---
 
 <article class="card">
-  <h2>{name}</h2>
+  <h3>
+    {
+      featured && (
+        <svg
+          class="star"
+          viewBox="0 0 24 24"
+          width="15"
+          height="15"
+          fill="currentColor"
+          role="img"
+          aria-label="Selected project"
+        >
+          <path d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.35l-5.81 3.05 1.11-6.47-4.7-4.58 6.5-.95z" />
+        </svg>
+      )
+    }
+    {name}
+  </h3>
 
   <p class="description">{description}</p>
 
@@ -74,10 +91,21 @@ const presentLinks = linkOrder
     gap: 12px;
   }
 
-  h2 {
+  /* h3, not h2: each card now sits under a section heading. */
+  h3 {
     font-size: 17px;
     font-weight: 600;
     margin: 0;
+  }
+
+  /* Inline with the first line of the title rather than floated in a corner,
+     so a wrapped title doesn't leave it stranded. Labelled, not aria-hidden —
+     nothing else on the card says the project is a selected one. */
+  .star {
+    display: inline;
+    vertical-align: -2px;
+    margin-right: 6px;
+    color: var(--accent);
   }
 
   /* Grows so the tag/link rows sit flush at the bottom of every card in a row. */

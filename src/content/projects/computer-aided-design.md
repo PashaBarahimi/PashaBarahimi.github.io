@@ -1,6 +1,7 @@
 ---
 name: Computer Aided Design Projects
 description: Hardware encoding functions applied over a 3D matrix — permutation, column parity, rotate, revalue and AddRc.
+category: coursework
 languages:
   - Verilog
 tags:
