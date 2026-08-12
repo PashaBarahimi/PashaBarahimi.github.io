@@ -1,6 +1,6 @@
 ---
 name: Network Security Projects
-description: Apache with SSL and packet capture in Wireshark, encryption, decryption and digital signatures with OpenSSL, GitHub OAuth with JWT, and a phishing demonstration built on DHCP snooping and DNS spoofing.
+description: Apache with SSL and packet capture in Wireshark, encryption, decryption and digital signatures with OpenSSL, and GitHub OAuth with JWT.
 category: coursework
 featured: true
 languages:
