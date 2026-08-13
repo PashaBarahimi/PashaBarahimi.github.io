@@ -1,34 +1,44 @@
 ---
-// A dateRange may list several discrete terms ("Fall 2022, Fall 2023"). The
-// date column is 130px — too narrow for two terms — and left alone the browser
-// fills greedily and breaks inside one: "Fall 2022, Fall" / "2023". Each term
-// gets its own nowrap span, with the break opportunity in the space between
-// them, so a line can only ever end at a comma.
+// Renders a dateRange into chunks that may not be broken across lines, so the
+// date column can only ever wrap at a point that reads as one.
 //
-// Renders the spans only; the caller supplies the .date wrapper, whose font and
-// colour these inherit.
+// Two kinds of break point: the commas between discrete terms ("Fall 2022,
+// Fall 2023") and the dash inside a range ("Sep 2020 — Sep 2025"). Everything
+// between them is a chunk, marked nowrap. Left to itself the browser fills
+// greedily and breaks mid-date — "Fall 2022, Fall" / "2023", or "Sep 2020 —
+// Sep" / "2025" — which is why the chunks are explicit rather than relying on
+// the column being wide enough.
+//
+// Renders the chunks only; the caller supplies the .date wrapper, whose font
+// and colour these inherit.
 interface Props {
   value: string;
 }
 
 const { value } = Astro.props;
-const terms = value.split(', ');
+
+// Separators stay attached to the chunk they follow, so a wrapped line never
+// opens with a stranded comma or dash.
+const chunks = value
+  .split(', ')
+  .flatMap((term, i, terms) => {
+    const withComma = i < terms.length - 1 ? `${term},` : term;
+    const parts = withComma.split(' — ');
+    return parts.map((part, j) => (j < parts.length - 1 ? `${part} —` : part));
+  });
 ---
 
 {
-  terms.map((term, i) => (
+  chunks.map((chunk, i) => (
     <>
-      <span class="term">
-        {term}
-        {i < terms.length - 1 ? ',' : ''}
-      </span>
-      {i < terms.length - 1 ? ' ' : ''}
+      <span class="chunk">{chunk}</span>
+      {i < chunks.length - 1 ? ' ' : ''}
     </>
   ))
 }
 
 <style>
-  .term {
+  .chunk {
     white-space: nowrap;
   }
 </style>

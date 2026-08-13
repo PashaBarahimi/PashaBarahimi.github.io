@@ -348,10 +348,13 @@ const socials = [
     gap: 36px;
   }
 
-  /* Education / Teaching: mono date column + content column. */
+  /* Education / Teaching: mono date column + content column. The column has to
+     clear the longest single date ("Sep 2020 — Sep 2025", 148px at this size);
+     below that width DateTerms lets a lone term wrap instead of colliding with
+     the title. Fixed per row, not auto, so the columns line up across entries. */
   .dated {
     display: grid;
-    grid-template-columns: 130px 1fr;
+    grid-template-columns: clamp(130px, 17vw, 155px) 1fr;
     gap: 20px;
   }
 
