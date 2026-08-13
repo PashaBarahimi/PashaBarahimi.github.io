@@ -68,8 +68,7 @@ const socials = [
       <p class="tagline">{profile.tagline}</p>
       <p id="about" class="bio">{profile.bio}</p>
 
-      {/* Label names the file you get; cvPath is the route that forwards to it. */}
-      <a class="cv" href={asset(profile.cvPath)}>↓ cv.pdf</a>
+      <a class="cv" href={asset(profile.cvPath)}>↓ {profile.cvPath}</a>
     </div>
   </section>
 

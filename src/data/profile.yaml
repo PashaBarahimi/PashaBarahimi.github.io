@@ -13,7 +13,8 @@ github: https://github.com/PashaBarahimi
 linkedin: https://linkedin.com/in/PashaBarahimi
 scholar: https://scholar.google.com/citations?user=HRFc31IAAAAJ
 orcid: https://orcid.org/0009-0005-6803-0438
-# Route, not a file: src/pages/cv.astro forwards to the latest CV release.
-cvPath: cv
+# Not committed here: the deploy workflow drops the latest CV release into
+# dist/ under this name, so the PDF has one home and stays current.
+cvPath: cv.pdf
 # 400x400 WebP (10KB), downscaled from a 720x720 PNG.
 photo: profile.webp

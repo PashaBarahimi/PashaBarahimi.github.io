@@ -35,6 +35,26 @@ jobs:
       - name: Build
         run: npm run build
 
+      # The CV is built and released from PashaBarahimi/CV, so it is fetched at
+      # deploy time rather than committed here — the site serves the bytes from
+      # its own domain, but only one copy of the PDF is ever maintained.
+      # -f so a missing or renamed asset fails the deploy instead of quietly
+      # publishing a dead download link.
+      - name: Fetch the latest CV release
+        run: >-
+          curl -fsSL --retry 3 --retry-delay 2
+          -o dist/cv.pdf
+          https://github.com/PashaBarahimi/CV/releases/latest/download/cv.pdf
+
+      - name: Verify it is a PDF
+        run: |
+          file_head=$(head -c 5 dist/cv.pdf)
+          if [ "$file_head" != "%PDF-" ]; then
+            echo "dist/cv.pdf is not a PDF (starts with: $file_head)" >&2
+            exit 1
+          fi
+          ls -l dist/cv.pdf
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
