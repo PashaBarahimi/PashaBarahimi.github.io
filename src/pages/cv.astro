@@ -1,0 +1,28 @@
+---
+// /cv forwards to the latest CV release rather than a copy committed here, so
+// the PDF has one home and can't fall out of date on this side.
+//
+// GitHub Pages serves static files only — no server-side redirect — so this is
+// a meta refresh with a script for browsers that act on it sooner, and a plain
+// link for anything that honours neither. Deliberately not built on BaseLayout:
+// nav and footer around a page nobody sees would only slow the hop.
+const target = 'https://github.com/PashaBarahimi/CV/releases/latest/download/cv.pdf';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+    <title>CV — Pasha Barahimi</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={target}>cv.pdf</a>…</p>
+    <script is:inline define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </body>
+</html>
