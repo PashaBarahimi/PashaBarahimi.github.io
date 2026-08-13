@@ -1,0 +1,29 @@
+---
+// A short path to hand out or type from memory. The hero button links at the
+// release directly — this exists only so /cv works too.
+//
+// GitHub Pages serves static files only, so there is no server-side redirect to
+// use: this is a meta refresh, with a script for browsers that act on it sooner
+// and a plain link for anything that honours neither. Deliberately not built on
+// BaseLayout — nav and footer around a page nobody looks at would only slow the
+// hop.
+import { profile } from '../data';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${profile.cvUrl}`} />
+    <link rel="canonical" href={profile.cvUrl} />
+    <meta name="robots" content="noindex" />
+    <title>CV — {profile.name}</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href={profile.cvUrl}>cv.pdf</a>…</p>
+    <script is:inline define:vars={{ target: profile.cvUrl }}>
+      window.location.replace(target);
+    </script>
+  </body>
+</html>

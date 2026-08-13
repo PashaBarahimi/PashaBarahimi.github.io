@@ -16,7 +16,8 @@ export default defineConfig({
   // Emits sitemap-index.xml + sitemap-0.xml at build, with URLs derived from
   // `site` above. Generated rather than hand-written so it can't drift as pages
   // are added. public/robots.txt points crawlers at it.
-  integrations: [sitemap()],
+  // /cv only forwards to the CV release; not a page worth indexing.
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/cv/') })],
   vite: {
     // Lets pages `import education from '../data/education.yaml'`.
     // Build-time only — nothing ships to the client.
