@@ -1,8 +1,6 @@
-# Terms are listed individually rather than as ranges — several of these
-# weren't taught in consecutive semesters.
-#
-# `level` is "undergraduate" or "graduate" and is required on every entry; it
-# renders as the pill next to the course title.
+# `level` is required on every entry and renders as the pill beside the title.
+# `dateRange` may hold several comma-separated terms; DateTerms.astro keeps a
+# line break from landing inside one.
 - dateRange: "Fall 2024"
   title: "Head Teaching Assistant — Introduction to Software Testing"
   institution: "University of Tehran, School of ECE"

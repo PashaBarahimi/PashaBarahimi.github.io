@@ -36,9 +36,8 @@ const projects = defineCollection({
     // defaulted so a new project has to say where it belongs instead of
     // silently landing in whichever bucket happened to be the fallback.
     category: z.enum(['research', 'industry', 'coursework', 'personal']),
-    // Marks the work worth pointing someone at first. Featured entries sort to
-    // the front of their own section and carry a star; they don't get a section
-    // of their own, so the type grouping stays intact.
+    // Featured entries sort to the front of their own section and carry a
+    // star; they don't get a section of their own.
     featured: z.boolean().default(false),
     // Implementation languages, kept out of `tags` so they can render as their
     // own section. A list because a project can be written in more than one.

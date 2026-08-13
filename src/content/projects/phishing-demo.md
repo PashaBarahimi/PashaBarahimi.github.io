@@ -12,7 +12,6 @@ tags:
   - dhcp
 links:
   github: https://github.com/PashaBarahimi/Network-Security-Phishing-Project
-# Fractional so it lands beside the network security card it split off from,
-# without renumbering every coursework entry after it.
+# Fractional: inserts between two orders without renumbering the rest.
 order: 7.5
 ---

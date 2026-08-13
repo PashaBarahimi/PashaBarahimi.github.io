@@ -27,9 +27,7 @@ const rendered = await Promise.all(
   })
 );
 
-// Sections in reading order: the work that says most about me first, the long
-// tail of coursework after. Within each, the manual `order` above still
-// decides — so the previously curated coursework leads its own section.
+// Sections render in this order. Within each, the sort above still decides.
 // A section with no entries doesn't render at all.
 const sections = [
   { id: 'research', heading: 'Research' },
@@ -123,9 +121,8 @@ const grouped = sections
 
   /* Column count comes from auto-fill + minmax alone — no breakpoints.
      auto-fill, not auto-fit: with the grid split across sections, auto-fit
-     collapses the empty tracks and a one-card section stretches that card to
-     the full 921px while coursework cards sit at 291px. Keeping the empty
-     tracks holds every card to the same width, whatever a section contains. */
+     collapses the empty tracks, so a section holding fewer cards than a full
+     row stretches them. Keeping the tracks holds every card to one width. */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

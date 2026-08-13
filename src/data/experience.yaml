@@ -1,16 +1,26 @@
-# `location` and `supervisor` are optional — each renders as its own item in
-# the meta line under the role, and is dropped when empty. `organization` holds
-# the employer or institution alone; supervisors used to be appended to it.
-#
-# `location` exists to flag remote work, not to give a mailing address: set it
-# to "Remote" where that applies and leave it off otherwise, since on-site means
-# the organization already named on the place line. No city/country.
+# `location` and `supervisor` are optional: each renders as its own item in the
+# meta line under the role, and is skipped when absent.
+- dateRange: "Jun 2026 — present"
+  title: "Research Assistant"
+  organization: "University of Southern California"
+  supervisor: "Prof. Leana Golubchik"
+  bullets:
+    - "Studying adversarial robustness of resource allocation algorithms in LEO satellite networks, with the Quantitative Evaluation and Design (QED) group; manuscript under review."
+
+- dateRange: "Mar 2026 — Jun 2026"
+  title: "Research Assistant"
+  organization: "University of Southern California"
+  supervisor: "Prof. Srivatsan Ravi"
+  bullets:
+    - "Implemented and gas-benchmarked a Solidity hashed timelock contract for conditional payments, deployed on an Ethereum testnet."
+
 - dateRange: "Jan 2025 — Dec 2025"
   title: "Mid-Level Software Engineer (Full-Time)"
   organization: "Okala"
   bullets:
-    - "Contributed to the platform's payment system."
-    - "Implemented efficient algorithms to meet the real-time requirements of the system."
+    - "Redesigned the payment service to settle multiple orders with a single payment and implemented the redesign as sole engineer, rolled out with no downtime, no data loss, and no significant added latency."
+    - "Integrated four major payment gateways: a bank, two buy-now-pay-later providers, and a credit provider."
+    - "Owned and maintained the payment service throughout, peaking at 1,000 paid orders per minute."
 
 - dateRange: "Oct 2024 — Sep 2025"
   title: "Bachelor's Thesis — Analysis of Data from Decentralized Exchanges and Automated Market Makers"
@@ -27,30 +37,29 @@
   location: "Remote"
   supervisor: "Prof. Fan Long"
   bullets:
-    - "Developed an efficient Rust algorithm for the Heimdall toolkit to detect self-reverting storage slots — reentrancy guards and cache slots — helping prevent reentrancy vulnerabilities."
-    - "Solved the symbolic-execution problem of unknown storage values being interpreted as zero by supplying initial slot values to the engine."
-    - "Results contributed to \"Enforcing Control Flow Integrity on DeFi Smart Contracts\"."
+    - "Developed a Rust algorithm for the Heimdall toolkit to detect self-reverting storage slots — reentrancy guards and cache slots — enabling detection of reentrancy vulnerability patterns."
+    - "Resolved an ambiguity in symbolic execution where unknown storage values were indistinguishable from genuine zero values, by supplying initial slot values."
+    - "Results contributed to the ICSE 2026 paper listed under publications."
 
 - dateRange: "Jul 2023 — Sep 2023"
   title: "Research Intern"
   organization: "Max Planck Institute for Software Systems (MPI-SWS)"
   supervisor: "Prof. Rupak Majumdar"
   bullets:
-    - "Contributed to implementing the TruSt dynamic partial-order reduction algorithm inside Lincheck, a model-checking tool for concurrent data structures on the JVM."
-    - "Documented the challenge of uniquely identifying shared objects under garbage collection, along with possible solutions."
+    - "Co-implemented the TruSt dynamic partial-order reduction algorithm within Lincheck, a model checker for concurrent data structures on the JVM."
+    - "Established that the approach was blocked by shared-variable identity on the JVM under garbage collection, and documented the analysis for future work."
 
 - dateRange: "Oct 2022 — Jan 2024"
-  title: "Junior Software Engineer (Part-Time)"
+  title: "Junior Software Developer (Part-Time)"
   organization: "Sotoon"
   bullets:
-    - "Contributed to Sotoon's cloud infrastructure and services across three teams."
-    - "Database team: completed mentorship, gaining skills in Kubernetes controllers and PostgreSQL management."
-    - "Security team: maintained and improved HuskyCI, a security test orchestrator, and contributed to the bug-bounty backend."
-    - "Integration team: developed features for the Announcer backend — automated announcements for Zoho, Slack and email — and improved the IAM service."
+    - "Database team: Kubernetes controllers and PostgreSQL management."
+    - "Security team: maintained and extended HuskyCI, a security test orchestrator, and contributed to the bug-bounty backend."
+    - "Integration team: built features for the Announcer service — automated announcements to Zoho, Slack and email — and improved the IAM identity service."
 
 - dateRange: "Jun 2022 — Sep 2022"
-  title: "SRE Intern (Full-Time)"
+  title: "Site Reliability Engineering Intern (Full-Time)"
   organization: "Sotoon"
   bullets:
-    - "Implemented an API gateway, optimizing service interactions and improving scalability."
-    - "Worked with Git, Docker, Kubernetes, Redis, Prometheus, Grafana, Makefile and Ansible."
+    - "Implemented an API gateway improving service routing and scalability."
+    - "Worked across Docker, Kubernetes, Redis, Prometheus, Grafana and Ansible."

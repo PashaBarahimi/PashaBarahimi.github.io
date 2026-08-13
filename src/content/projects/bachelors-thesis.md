@@ -11,7 +11,6 @@ tags:
   - anomaly-detection
   - machine-learning
 links: {}
-# Between the ICSE paper and the Lincheck work: the most recent research, but
-# the published paper still leads the section.
+# Fractional: inserts between two orders without renumbering the rest.
 order: 1.5
 ---

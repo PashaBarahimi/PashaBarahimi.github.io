@@ -411,10 +411,9 @@ const socials = [
     margin-bottom: 6px;
   }
 
-  /* Where the role was: organization on its own line under the title, with a
-     map pin. `location` rides along as a parenthetical rather than a separate
-     item — it only ever says "Remote", which belongs with the place, and a
-     parenthetical can't strand a separator at the start of a wrapped line. */
+  /* Organization on its own line under the title, with a map pin. `location`
+     renders as a parenthetical rather than a separate item, so no separator can
+     be stranded at the start of a wrapped line. */
   .place {
     display: flex;
     align-items: flex-start;
