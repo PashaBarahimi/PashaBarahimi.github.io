@@ -2,6 +2,7 @@
 name: Phishing Demonstration
 description: A phishing demonstration built on DHCP snooping and DNS spoofing, developed as the final project of the network security course.
 category: coursework
+featured: true
 languages:
   - Python
   - Shell

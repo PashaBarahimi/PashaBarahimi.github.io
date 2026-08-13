@@ -2,6 +2,7 @@
 name: Data Science Projects
 description: Web scraping and exploratory analysis, statistical testing, loss functions and regression, feature engineering, dimensionality reduction and unsupervised learning, and semi-supervised learning with LLMs.
 category: coursework
+featured: true
 languages:
   - Python
 tags:

@@ -1,5 +1,5 @@
 ---
-name: xv6 Kernel Extensions
+name: Operating System Lab Projects
 description: Extensions to the xv6 teaching operating system — new system calls, alternative process scheduling policies, and kernel synchronization primitives.
 category: coursework
 featured: true
