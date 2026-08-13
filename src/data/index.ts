@@ -19,7 +19,7 @@ export interface Profile {
   linkedin: string;
   scholar: string;
   orcid: string;
-  cvPath: string;
+  cvUrl: string;
   photo?: string;
 }
 

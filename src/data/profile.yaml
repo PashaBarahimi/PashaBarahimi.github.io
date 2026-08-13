@@ -13,8 +13,8 @@ github: https://github.com/PashaBarahimi
 linkedin: https://linkedin.com/in/PashaBarahimi
 scholar: https://scholar.google.com/citations?user=HRFc31IAAAAJ
 orcid: https://orcid.org/0009-0005-6803-0438
-# Not committed here: the deploy workflow drops the latest CV release into
-# dist/ under this name, so the PDF has one home and stays current.
-cvPath: cv.pdf
+# Absolute: the CV is built and released from its own repo, and linking at the
+# release directly means publishing one updates the site with no deploy here.
+cvUrl: https://github.com/PashaBarahimi/CV/releases/latest/download/cv.pdf
 # 400x400 WebP (10KB), downscaled from a 720x720 PNG.
 photo: profile.webp
