@@ -22,7 +22,7 @@ const rendered = await Promise.all(
   })
 );
 
-const hasAnyBibtex = publications.some((entry) => entry.data.bibtex);
+const needsModal = publications.some((entry) => entry.data.bibtex || entry.data.abstract);
 ---
 
 <BaseLayout
@@ -50,7 +50,7 @@ const hasAnyBibtex = publications.some((entry) => entry.data.bibtex);
   </section>
 
   {
-    hasAnyBibtex && (
+    needsModal && (
       <dialog id="cite-dialog" aria-label="BibTeX citation">
         <div class="cite-panel">
           <div class="cite-head">
@@ -153,8 +153,18 @@ const hasAnyBibtex = publications.some((entry) => entry.data.bibtex);
     border-radius: 3px;
     padding: 16px;
     overflow-x: auto;
-    white-space: pre-wrap;
+    white-space: pre;
     margin: 0 0 16px;
+  }
+
+  /* Abstracts are prose: wrap them and read them in the body face. */
+  #cite-text.prose {
+    font-family: inherit;
+    font-size: 14.5px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 
   #cite-copy {
@@ -177,22 +187,38 @@ const hasAnyBibtex = publications.some((entry) => entry.data.bibtex);
 <script>
   // Vanilla port of the cite modal from design-reference/Publications.dc.html.
   // One shared <dialog> — native Esc-to-close and focus trapping — filled from
-  // the clicked button's data-bibtex.
+  // the clicked button's data-bibtex or data-abstract.
   const dialog = document.getElementById('cite-dialog') as HTMLDialogElement | null;
   const text = document.getElementById('cite-text');
+  const fileLabel = document.querySelector('#cite-dialog .cite-file');
   const copyBtn = document.getElementById('cite-copy');
   const closeBtn = document.getElementById('cite-close');
 
-  if (dialog && text && copyBtn && closeBtn) {
+  if (dialog && text && fileLabel && copyBtn && closeBtn) {
     let resetLabel: ReturnType<typeof setTimeout>;
 
+    const open = (content: string, file: string, label: string, prose: boolean) => {
+      text.textContent = content;
+      text.classList.toggle('prose', prose);
+      text.scrollTop = 0;
+      text.scrollLeft = 0;
+      fileLabel.textContent = file;
+      dialog.setAttribute('aria-label', label);
+      copyBtn.textContent = 'copy';
+      clearTimeout(resetLabel);
+      dialog.showModal();
+    };
+
     document.querySelectorAll<HTMLButtonElement>('button[data-bibtex]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        text.textContent = btn.dataset.bibtex ?? '';
-        copyBtn.textContent = 'copy';
-        clearTimeout(resetLabel);
-        dialog.showModal();
-      });
+      btn.addEventListener('click', () =>
+        open(btn.dataset.bibtex ?? '', 'citation.bib', 'BibTeX citation', false)
+      );
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('button[data-abstract]').forEach((btn) => {
+      btn.addEventListener('click', () =>
+        open(btn.dataset.abstract ?? '', 'abstract.txt', 'Abstract', true)
+      );
     });
 
     closeBtn.addEventListener('click', () => dialog.close());

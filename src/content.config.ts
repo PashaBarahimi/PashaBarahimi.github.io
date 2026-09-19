@@ -22,6 +22,7 @@ const publications = defineCollection({
         slides: z.string().optional(),
       })
       .default({}),
+    abstract: z.string().optional(), // renders an `abstract` button + modal when present
     bibtex: z.string().optional(), // renders a `cite` button + BibTeX modal when present
     draft: z.boolean().default(false),
   }),

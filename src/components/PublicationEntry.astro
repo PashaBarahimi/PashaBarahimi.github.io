@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { title, authors, ownerName, venue, year, links, bibtex } = entry.data;
+const { title, authors, ownerName, venue, year, links, abstract, bibtex } = entry.data;
 
 // Only the link types present in frontmatter render, in this fixed order.
 const linkOrder = ['pdf', 'doi', 'code', 'slides'] as const;
@@ -34,11 +34,16 @@ const presentLinks = linkOrder
   <div class="venue">{venue}</div>
 
   {
-    (presentLinks.length > 0 || bibtex) && (
+    (presentLinks.length > 0 || abstract || bibtex) && (
       <div class="links">
         {presentLinks.map((link) => (
           <a href={link.href}>{link.kind}</a>
         ))}
+        {abstract && (
+          <button class="cite" type="button" data-abstract={abstract} aria-haspopup="dialog">
+            abstract
+          </button>
+        )}
         {bibtex && (
           <button class="cite" type="button" data-bibtex={bibtex} aria-haspopup="dialog">
             cite
