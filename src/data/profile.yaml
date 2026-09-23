@@ -4,8 +4,8 @@ terminalHost: guest@pashabarahimi
 terminalCommand: whoami
 tagline: "PhD Student, Computer Engineering, University of Southern California"
 bio: >-
-  PhD student at USC, working on the security of networked and decentralized systems —
-  mostly the parts of computing nobody sees until they break. Before this: first in my
+  PhD student at USC, working on resource management and security of networked,
+  decentralized, and agentic AI systems — mostly the parts of computing nobody sees until they break. Before this: first in my
   class at the University of Tehran, research stops in Germany and Canada, and a few
   years building payment systems in industry. Off the clock, films and 8-ball.
 email: pashabarahimi@gmail.com

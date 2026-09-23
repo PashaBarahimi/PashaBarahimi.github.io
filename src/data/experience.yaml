@@ -5,7 +5,8 @@
   organization: "University of Southern California"
   supervisor: "Prof. Leana Golubchik"
   bullets:
-    - "Studying adversarial robustness of resource allocation algorithms in LEO satellite networks, with the Quantitative Evaluation and Design (QED) group; manuscript under review."
+    - "Studying adversarial robustness of resource allocation algorithms in LEO satellite networks, with the Quantitative Evaluation and Design (QED) group; under review, listed under publications."
+    - "Developing probabilistic models of agentic AI workflows for resource management and scheduling."
 
 - dateRange: "Mar 2026 — Jun 2026"
   title: "Research Assistant"
