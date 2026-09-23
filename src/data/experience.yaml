@@ -13,6 +13,7 @@
   supervisor: "Prof. Srivatsan Ravi"
   bullets:
     - "Implemented and gas-benchmarked a Solidity hashed timelock contract for conditional payments, deployed on an Ethereum testnet."
+    - "Results contributed to the arXiv 2026 preprint listed under publications."
 
 - dateRange: "Jan 2025 — Dec 2025"
   title: "Mid-Level Software Engineer (Full-Time)"
